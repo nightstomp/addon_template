@@ -1,0 +1,11 @@
+h1. Addon_Template Changelog
+
+(Datei: _changelog.txt)
+
+h4. 6.04.2010 - v1.0
+
+* fasel
+
+h4. 23.03.2010 - v1.0
+
+* blah

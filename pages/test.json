@@ -1,0 +1,15 @@
+{
+  "VERSION":
+  {
+    "VERSION":0,
+    "MINORVERSION":4,
+    "SUBVERSION":2,
+    "REVISION":74
+  },
+  "TYPE":"addon",
+  "ID":374,
+  "HOMEPAGE":"http://rexdev.de/index.php?articel_id=127",
+  "HELP":"http://rexdev.de/index.php?articel_id=173",
+  "CHANGELOG":"http://rexdev.de/index.php?articel_id=172",
+  "DOWNLOAD":"http://www.redaxo.de/180-0-addon-details.html?addon_id=374"
+}              
