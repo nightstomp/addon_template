@@ -16,17 +16,18 @@ $subpage = rex_request('subpage', 'string');
 $chapter = rex_request('chapter', 'string');
 $func = rex_request('func', 'string');
 
-// DEFINE SUBPAGES
-////////////////////////////////////////////////////////////////////////////////
-$subpages = array (
-  array ('','Hauptseite'),
-  array ('settings','Einstellungen'),
-  array ('help','Hilfe')
-);
-
 // REX BACKEND LAYOUT TOP
 ////////////////////////////////////////////////////////////////////////////////
 require $REX['INCLUDE_PATH'] . '/layout/top.php';
+
+// DEFINE SUBPAGES
+////////////////////////////////////////////////////////////////////////////////
+$subpages = array (
+  array ('','Scandir Test'),
+  array ('main','Hauptseite'),
+  array ('settings','Einstellungen'),
+  array ('help','Hilfe')
+);
 
 // TITLE & SUBPAGE NAVIGATION
 ////////////////////////////////////////////////////////////////////////////////
@@ -39,7 +40,7 @@ rex_title($REX['ADDON']['name'][$myself].' <span class="addonversion">'.$version
 ////////////////////////////////////////////////////////////////////////////////
 if(!$subpage)
   {
-    $subpage = 'main';  /* DEFAULT SUBPAGE */
+    $subpage = 'scandir';  /* DEFAULT SUBPAGE */
   }
 require $REX['INCLUDE_PATH'] . '/addons/'.$myself.'/pages/'.$subpage.'.inc.php';
 
