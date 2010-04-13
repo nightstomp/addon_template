@@ -17,7 +17,7 @@ $myself = "addon_template";
 ////////////////////////////////////////////////////////////////////////////////
 $do_install = true;
 $requiered_PHP = 5;
-$requiered_addons = array('foo','bar');
+$requiered_addons = array('phpmailer','textile');
 
 /* PHP CHECK */
 if (intval(PHP_VERSION) < $requiered_PHP)
@@ -32,14 +32,14 @@ foreach($requiered_addons as $a)
 {
   if (!OOAddon::isInstalled($a))
   {
-    $REX['ADDON']['installmsg'][$myself] = 'Bitte <a href="index.php?page=addon&addonname='.$a.'&install=1">installieren</a> Sie erst das '.$a.' Addon.';
+    $REX['ADDON']['installmsg'][$myself] = '<br />Addon "'.$a.'" ist nicht installiert.  >>> <a href="index.php?page=addon&addonname='.$a.'&install=1">jetzt installieren</a> <<<';
     $do_install = false;
   }
   else
   {
     if (!OOAddon::isAvailable($a))
     {
-      $REX['ADDON']['installmsg'][$myself] = 'Bitte <a href="index.php?page=addon&addonname='.$a.'&activate=1">aktivieren</a> Sie das '.$a.' Addon.';
+      $REX['ADDON']['installmsg'][$myself] = '<br />Addon "'.$a.'" ist nicht aktiviert.  >>> <a href="index.php?page=addon&addonname='.$a.'&activate=1">jetzt aktivieren</a> <<<';
       $do_install = false;
     }
     
