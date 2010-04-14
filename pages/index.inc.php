@@ -26,7 +26,8 @@ $subpages = array (
   array ('','Default Seite'),
   array ('settings','Einstellungen'),
   array ('help','Hilfe'),
-  array ('scandir','Scandir Test')
+  array ('scandir','Scandir Test'),
+  array ('rexinclude','RexInclude Test')
 );
 
 // TITLE & SUBPAGE NAVIGATION
