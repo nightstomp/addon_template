@@ -10,11 +10,12 @@ echo '<div class="rex-addon-output">
 
 /* ----------------------------- SCANDIR TEST ------------------------------- */
 
-
+echo '<pre>';
+echo '// Funktion blah("frzlbrmpft"):'."\n";
+blah('frzlbrmpft');
+echo '</pre>';
 
 echo '<pre>';
-blah('frzlbrmpft');
-echo '  // blah() funktioniert -> include von "funtion.test.inc.php" hat geklappt';
 highlight_string(
 "<?php\n\n// rexdev_scandir(\$myroot.'/functions',1,array('function.rex_addon_template_css_add.inc.php','function.textile_parser.inc.php','function.rexdev_scandir.inc.php'),array('function.*'))) \n\n".
 print_r(rexdev_scandir($myroot.'/functions',1,array('function.rex_addon_template_css_add.inc.php','function.textile_parser.inc.php','function.rexdev_scandir.inc.php'),array('function.*')),true).
