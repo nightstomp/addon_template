@@ -8,6 +8,24 @@
 * $Id: help.inc.php 68 2010-04-06 15:30:24Z jeffe $: 
 */
 
+/*	OVERRIDES FÜR css_form.css */
+
+  div.rex-form div.rex-form-row p.rex-form-radio label
+  {
+    display:inline;
+    float:none;
+    margin:0 20px 0 0;
+    padding:0;
+  }
+  div.rex-form div.rex-form-row p.rex-form-radio span
+  {
+    clear: both;
+    display: block;
+    float: left;
+    width: 300px;
+    padding: 5px;
+  }
+
 /* ADDON HEADLINE */
 span.addonversion {
   font-size:10px;
