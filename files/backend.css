@@ -1,0 +1,99 @@
+/**
+* Addon_Template
+*
+* @author <a href="http://rexdev.de">rexdev.de</a>
+*
+* @package redaxo4
+* @version 1.0
+* $Id: help.inc.php 68 2010-04-06 15:30:24Z jeffe $: 
+*/
+
+/*	OVERRIDES FÜR css_form.css */
+
+  div.rex-form div.rex-form-row p.rex-form-radio label
+  {
+    display:inline;
+    float:none;
+    margin:0 20px 0 0;
+    padding:0;
+  }
+  div.rex-form div.rex-form-row p.rex-form-radio span
+  {
+    clear: both;
+    display: block;
+    float: left;
+    width: 300px;
+    padding: 5px;
+  }
+
+/* ADDON HEADLINE */
+span.addonversion {
+  font-size:10px;
+  color:silver;
+  }
+  
+/* ADDON CONTENT */
+.rexdev {
+  padding:2px 8px 8px 8px;
+  }
+  
+.rexdev p {
+  font-size:12px;
+  }
+
+.rexdev h1 {
+  font-size:16px;
+  border-bottom:1px solid #DFE9E9;
+  margin:2px 0 10px 0;
+  padding:0 0 2px 0;
+  }
+
+.rexdev h2 {
+  font-size:14px;
+  margin:2px 0 10px 0;
+  padding:0;
+  }
+
+.rexdev h3 {
+  font-size:13px;
+  margin:2px 0 10px 0;
+  padding:0;
+  }
+
+.rexdev h4 {
+  font-size:12px;
+  margin:2px 0 10px 0;
+  padding:0;
+  }
+
+.rexdev h5 {
+  font-size:11px;
+  margin:2px 0 10px 0;
+  padding:0;
+  }
+  
+.rexdev cite,
+.rexdev code,
+.rexdev pre {
+  color:blue;
+  font-family:monospace;
+  font-style:normal;
+  font-size:12px;
+  }
+
+.rexdev pre {
+  overflow:auto;
+  border:1px dashed #C0C0C0;
+  background:#FAF9F5;
+  margin:2px 4px 8px 0;
+  padding:8px;
+  line-height:12px;
+  }
+
+.rexdev hr {
+  height:1px;
+  border:0;
+  border-top:1px solid silver;
+  margin:8px 0;
+  padding:0;
+  }
