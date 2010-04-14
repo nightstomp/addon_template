@@ -2,7 +2,8 @@
 /**
 * Addon_Template
 *
-* @author <a href="http://rexdev.de">rexdev.de</a>
+* @author http://rexdev.de
+* @link   http://www.redaxo.de/180-0-addon-details.html?addon_id=720
 *
 * @package redaxo4
 * @version 1.0
