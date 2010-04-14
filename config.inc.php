@@ -87,9 +87,8 @@ if ($REX['REDAXO']) {
 ////////////////////////////////////////////////////////////////////////////////
 $backendcss = '<link rel="stylesheet" type="text/css" href="../files/addons/'.$myself.'/backend.css" />';
 
-include_once $myroot.'/functions/function.rexdev_css_add.inc.php';
-
 if ($REX['REDAXO']) {
+  include_once $myroot.'/functions/function.rexdev_css_add.inc.php';
   rex_register_extension('PAGE_HEADER', 'rexdev_css_add',array('css'=>$backendcss));
 }
 
