@@ -52,8 +52,7 @@ $REX["ADDON"]["addon_template"]["option2"] = 1;
 ////////////////////////////////////////////////////////////////////////////////
 $staticfunctions = array(
   'function.rexdev_scandir.inc.php',
-  'function.textile_parser.inc.php',
-  'function.rex_addon_template_css_add.inc.php'
+  'function.textile_parser.inc.php'
 );
 
 if ($REX['REDAXO']) {
