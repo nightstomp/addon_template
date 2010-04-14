@@ -19,15 +19,15 @@ $func = rex_request('func', 'string');
 $option1 = rex_request('option1', 'int');
 $option2 = rex_request('option2', 'int');
 
-// UPDATE/WRITE SETTINGS
+// UPDATE/WRITE USER SETTINGS
 ////////////////////////////////////////////////////////////////////////////////
-if ($func == "update")
-{
+if ($func == "update") {
   $REX['ADDON'][$myself]['option1'] = $option1;
   $REX['ADDON'][$myself]['option2'] = $option2;
 
-  $content = '$REX[\'ADDON\'][\'addon_template\'][\'option1\'] = '.$option1.'; 
-$REX[\'ADDON\'][\'addon_template\'][\'option2\'] = '.$option2.';
+  $content = 
+'$REX["ADDON"]["addon_template"]["option1"] = '.$option1.'; 
+$REX["ADDON"]["addon_template"]["option2"] = '.$option2.';
 ';
 
   $file = $REX['INCLUDE_PATH'].'/addons/'.$myself.'/config.inc.php';
@@ -35,33 +35,36 @@ $REX[\'ADDON\'][\'addon_template\'][\'option2\'] = '.$option2.';
   echo rex_info('Einstellungen wurden gespeichert.');
 }
 
-
-// OPTION1 SELECT BOX OPTIONS
+// OPTION1 SELECT BOX
 ////////////////////////////////////////////////////////////////////////////////
+$option1strings = array (
+1=>'inaktiv',
+2=>'foo..',
+3=>'bar..'
+);
+
 $option1_select = '';
-foreach($REX['ADDON'][$myself]['option1strings'] as $key => $string)
-{
-  if($REX['ADDON'][$myself]['option1']!=$key)
-  {
+foreach($option1strings as $key => $string) {
+  if($REX['ADDON'][$myself]['option1']!=$key) {
     $option1_select .= '<option value="'.$key.'">'.$string.'</option>';
-  }
-  else
-  {
+  } else {
     $option1_select .= '<option value="'.$key.'" selected="selected">'.$string.'</option>';
   }
 }
 
-// OPTION2 SELECT BOX OPTIONS
+// OPTION2 SELECT BOX
 ////////////////////////////////////////////////////////////////////////////////
+$option2strings = array (
+1=>'Nein',
+2=>'blah..',
+3=>'fasel..'
+);
+
 $option2_select = '';
-foreach($REX['ADDON'][$myself]['option2strings'] as $key => $string)
-{
-  if($REX['ADDON'][$myself]['option2']!=$key)
-  {
+foreach($option2strings as $key => $string) {
+  if($REX['ADDON'][$myself]['option2']!=$key) {
     $option2_select .= '<option value="'.$key.'">'.$string.'</option>';
-  }
-  else
-  {
+  } else {
     $option2_select .= '<option value="'.$key.'" selected="selected">'.$string.'</option>';
   }
 }
@@ -76,12 +79,12 @@ echo '
     <input type="hidden" name="func" value="update" />
 
         <fieldset class="rex-form-col-1">
-          <legend>Settings</legend>
+          <legend>Legend Option 1</legend>
           <div class="rex-form-wrapper">
 
             <div class="rex-form-row">
               <p class="rex-form-col-a rex-form-select">
-                <label for="option1">option1:</label>
+                <label for="option1">Label Option1</label>
                 <select id="option1" name="option1">
                 '.$option1_select.'
                 </select>
@@ -92,12 +95,12 @@ echo '
         </fieldset>
 
         <fieldset class="rex-form-col-1">
-          <legend>Versioncheck</legend>
+          <legend>Legend Option 2</legend>
           <div class="rex-form-wrapper">
 
           <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
-              <label for="option2">option2:</label>
+              <label for="option2">Label Option 2</label>
               <select id="option2" name="option2">
               '.$option2_select.'
               </select>

@@ -8,36 +8,6 @@
 * $Id: help.inc.php 68 2010-04-06 15:30:24Z jeffe $: 
 */
 
-/* BACKEND NAVI */
-
-#rex-navi-page-firephp a span {
-  color:#3EC94A;
-  background: white;
-  border: 1px solid #14568A;
-  border-right: 1px solid #EFF9F9;
-  border-bottom: 1px solid #EFF9F9;
-  padding:0 4px 0 4px;
-  margin-top:-1px;
-  -moz-border-radius:4px;
-  -webkit-border-radius:4px;
-  font-weight: normal;
-  float: right;
-  }
-
-#rex-navi-page-firephp a em {
-  color:#EA1144;
-  background: white;
-  border: 1px solid #14568A;
-  border-right: 1px solid #EFF9F9;
-  border-bottom: 1px solid #EFF9F9;
-  padding:0 4px 0 4px;
-  margin-top:-1px;
-  -moz-border-radius:4px;
-  font-weight: normal;
-  font-style:normal;
-  float: right;
-  }
-
 /* ADDON HEADLINE */
 span.addonversion {
   font-size:10px;
@@ -45,55 +15,55 @@ span.addonversion {
   }
   
 /* ADDON CONTENT */
-.firephp {
+.rexdev {
   padding:2px 8px 8px 8px;
   }
   
-.firephp p {
+.rexdev p {
   font-size:12px;
   }
 
-.firephp h1 {
+.rexdev h1 {
   font-size:16px;
   border-bottom:1px solid #DFE9E9;
   margin:2px 0 10px 0;
   padding:0 0 2px 0;
   }
 
-.firephp h2 {
+.rexdev h2 {
   font-size:14px;
   margin:2px 0 10px 0;
   padding:0;
   }
 
-.firephp h3 {
+.rexdev h3 {
   font-size:13px;
   margin:2px 0 10px 0;
   padding:0;
   }
 
-.firephp h4 {
+.rexdev h4 {
   font-size:12px;
   margin:2px 0 10px 0;
   padding:0;
   }
 
-.firephp h5 {
+.rexdev h5 {
   font-size:11px;
   margin:2px 0 10px 0;
   padding:0;
   }
   
-.firephp cite,
-.firephp code,
-.firephp pre {
+.rexdev cite,
+.rexdev code,
+.rexdev pre {
   color:blue;
   font-family:monospace;
   font-style:normal;
   font-size:12px;
   }
 
-.firephp pre {
+.rexdev pre {
   overflow:auto;
   border:1px dashed #C0C0C0;
   background:#FAF9F5;
@@ -102,7 +72,7 @@ span.addonversion {
   line-height:12px;
   }
 
-.firephp hr {
+.rexdev hr {
   height:1px;
   border:0;
   border-top:1px solid silver;

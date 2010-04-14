@@ -1,5 +1,25 @@
-h1. 1. Addon_Template Hilfe
+bc. Dies ist der Textile formatierte Inhalt der Datei "_readme.txt"
 
-(Datei: _readme.txt)
+h1. Überschrift 1. Ordnung
 
-Textile formatierter Text..
+h2. Überschrift 2. Ordnung
+
+h3. Überschrift 3. Ordnung
+
+h4. Überschrift 4. Ordnung
+
+h5. Überschrift 5. Ordnung
+
+Normaler Absatz Text.. Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo.
+
+*bold* _italic_
+
+Listen:
+
+* ungeordnete
+* Listen
+* Punkte..
+
+# nummerierte
+# Listen
+# Punkte..

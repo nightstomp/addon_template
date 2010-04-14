@@ -1,6 +1,6 @@
-h1. Addon_Template Changelog
+bc. Dies ist der Textile formatierte Inhalt der Datei "_changelog.txt"
 
-(Datei: _changelog.txt)
+h1. Addon_Template Changelog
 
 h4. 6.04.2010 - v1.0
 

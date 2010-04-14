@@ -19,90 +19,69 @@ $func    = rex_request('func',    'string');
 // SUBNAVIGATION ITEMS
 ////////////////////////////////////////////////////////////////////////////////
 $chapterpages = array (
-''             => 'Addon Hilfe', 
-'changelog'    => 'Addon Changelog', 
-'libchangelog' => 'FirePHP Changelog',
-'libreadme'    => 'FirePHP Readme',
-'liblicense'   => 'FirePHP License',
-'libcredits'   => 'FirePHP Credits'
+''             => array('Readme','_readme.txt','textile'),
+'changelog'    => array('Changelog','_changelog.txt','textile'),
+'iframelink'    => array('Externer link (iframe)','http://rexdev.de','iframe'),
+'newwinlink'    => array('Externer link (neues Fenster)','http://rexdev.de','jsopenwin')
 );
 
-// BUILD HELP SUBNAVIGATION
+// BUILD CHAPTER NAVIGATION
 ////////////////////////////////////////////////////////////////////////////////
 $chapternav = '';
-foreach ($chapterpages as $thischapter => $chaptertitle)
+foreach ($chapterpages as $chapterparam => $chapterprops)
 {
-  if ($chapter != $thischapter)
-  {
-  $chapternav .= ' | <a href="?page='.$myself.'&subpage=help&chapter='.$thischapter.'">'.$chaptertitle.'</a>';
-  }
-  else
-  {
-  $chapternav .= ' | '.$chaptertitle;
+  if ($chapter != $chapterparam) {
+    $chapternav .= ' | <a href="?page='.$myself.'&subpage=help&chapter='.$chapterparam.'">'.$chapterprops[0].'</a>';
+  } else {
+    $chapternav .= ' | '.$chapterprops[0];
   }
 }
-$chapternav = ltrim($chapternav, " | ")
+$chapternav = ltrim($chapternav, " | ");
 
-// ASSIGN INCLUDE FILES
+// SWITCH PARSEMODES & BUILD OUTPUT
 ////////////////////////////////////////////////////////////////////////////////
-switch ($chapter)
+$addonroot = $REX['INCLUDE_PATH']. '/addons/'.$myself.'/';
+$source    = $chapterpages[$chapter][1];
+$parse     = $chapterpages[$chapter][2];
+
+switch ($parse)
 {
-  case 'changelog':
-    $file = '_changelog.txt';
-    $parse = true;
-    break;
-  case 'libchangelog':
-    $file = $active_lib.'/CHANGELOG';
-    $parse = false;
-    break;
-  case 'liblicense':
-    $file = $active_lib.'/lib/FirePHPCore/LICENSE';
-    $parse = false;
-    break;
-  case 'libreadme':
-    $file = $active_lib.'/README';
-    $parse = false;
-    break;
-  case 'libcredits':
-    $file = $active_lib.'/CREDITS';
-    $parse = false;
-    break;
-    
-  default:
-    $file = '_readme.txt';
-    $parse = true;
+  case 'textile':
+  $source = $addonroot.$source;
+  $content = file_get_contents($source);
+  $html = textile_parser($content);
+  break;
+  
+  case 'txt':
+  $source = $addonroot.$source;
+  $content = file_get_contents($source);
+  $html =  '<pre class="plain">'.$content.'</pre>';
+  break;
+  
+  case 'iframe':
+  $html = '<iframe src="'.$source.'" width="99%" height="600px"></iframe>';
+  break;
+  
+  case 'jsopenwin':
+  $html = 'Externer link: <a href="'.$source.'">'.$source.'</a>
+  <script language="JavaScript">
+  <!--
+  window.open(\''.$source.'\',\''.$chapterpages[$chapter][1].'\');
+  //-->
+  </script>';
+  break;
 }
 
-echo '<div class="rex-addon-output">
+// ADDON OUTPUT
+////////////////////////////////////////////////////////////////////////////////
+echo '
+<div class="rex-addon-output">
   <h2 class="rex-hl2" style="font-size:1em">'.$chapternav.'</h2>
   <div class="rex-addon-content">
-  <div class= "firephp">';
-
-$file = $REX['INCLUDE_PATH']. '/addons/'.$myself.'/'.$file;
-$fh = fopen($file, 'r');
-$content = fread($fh, filesize($file));
-if ($parse == true)
-{
-$textile = htmlspecialchars_decode($content);
-$textile = str_replace("<br />","",$textile);
-$textile = str_replace("&#039;","'",$textile);
-if (strpos($REX['LANG'],'utf'))
-{
-  echo rex_a79_textile($textile);
-}
-else
-{
-  echo utf8_decode(rex_a79_textile($textile));
-}
-}
-else
-{
-  echo '<pre class="plain">'.$content.'</pre>';
-}
-
-echo '</div>
-</div>
+    <div class= "rexdev">
+    '.$html.'
+    </div>
+  </div>
 </div>';
-
 
 ?>

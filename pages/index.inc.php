@@ -23,25 +23,23 @@ require $REX['INCLUDE_PATH'] . '/layout/top.php';
 // DEFINE SUBPAGES
 ////////////////////////////////////////////////////////////////////////////////
 $subpages = array (
-  array ('','Scandir Test'),
-  array ('main','Hauptseite'),
+  array ('','Default Seite'),
   array ('settings','Einstellungen'),
-  array ('help','Hilfe')
+  array ('help','Hilfe'),
+  array ('scandir','Scandir Test')
 );
 
 // TITLE & SUBPAGE NAVIGATION
 ////////////////////////////////////////////////////////////////////////////////
-$versionstring = $REX['ADDON'][$myself]['VERSION'];
-array_pop($versionstring);
-$versionstring = implode('.', $versionstring);
+$versionstring = implode('.', $REX['ADDON'][$myself]['VERSION']);
 rex_title($REX['ADDON']['name'][$myself].' <span class="addonversion">'.$versionstring.'</span>', $subpages);
 
-// INCLUDE SUBPAGE
+// DEFINE DEFAULT SUBPAGE, INCLUDE REQUESTED SUBPAGE
 ////////////////////////////////////////////////////////////////////////////////
 if(!$subpage)
-  {
-    $subpage = 'scandir';  /* DEFAULT SUBPAGE */
-  }
+{
+  $subpage = 'main';  /* DEFAULT SUBPAGE */
+}
 require $REX['INCLUDE_PATH'] . '/addons/'.$myself.'/pages/'.$subpage.'.inc.php';
 
 // REX BACKEND LAYOUT BOTTOM
