@@ -19,10 +19,11 @@ $func    = rex_request('func',    'string');
 // SUBNAVIGATION ITEMS
 ////////////////////////////////////////////////////////////////////////////////
 $chapterpages = array (
-''             => array('Readme','_readme.txt','textile'),
-'changelog'    => array('Changelog','_changelog.txt','textile'),
-'iframelink'    => array('Externer link (iframe)','http://rexdev.de','iframe'),
-'newwinlink'    => array('Externer link (neues Fenster)','http://rexdev.de','jsopenwin')
+''           => array('Readme','_readme.txt','textile'),
+'changelog'  => array('Changelog','_changelog.txt','textile'),
+'iframelink' => array('Externer link (iframe)','http://rexdev.de','iframe'),
+'newwinlink' => array('Externer link (neues Fenster)','http://rexdev.de','jsopenwin'),
+'php'        => array('PHP include','pages/php_include_examle.php','php')
 );
 
 // BUILD CHAPTER NAVIGATION
@@ -44,6 +45,17 @@ $addonroot = $REX['INCLUDE_PATH']. '/addons/'.$myself.'/';
 $source    = $chapterpages[$chapter][1];
 $parse     = $chapterpages[$chapter][2];
 
+function get_include_contents($filename) {
+  if (is_file($filename)) {
+    ob_start();
+    include $filename;
+    $contents = ob_get_contents();
+    ob_end_clean();
+    return $contents;
+  }
+  return false;
+}
+
 switch ($parse)
 {
   case 'textile':
@@ -56,6 +68,17 @@ switch ($parse)
   $source = $addonroot.$source;
   $content = file_get_contents($source);
   $html =  '<pre class="plain">'.$content.'</pre>';
+  break;
+  
+  case 'raw':
+  $source = $addonroot.$source;
+  $content = file_get_contents($source);
+  $html = $content;
+  break;
+  
+  case 'php':
+  $source = $addonroot.$source;
+  $html =  get_include_contents($source);
   break;
   
   case 'iframe':
