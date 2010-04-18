@@ -90,7 +90,7 @@ switch ($parse)
   $html = 'Externer link: <a href="'.$source.'">'.$source.'</a>
   <script language="JavaScript">
   <!--
-  window.open(\''.$source.'\',\''.$chapterpages[$chapter][1].'\');
+  window.open(\''.$source.'\',\''.$source.'\');
   //-->
   </script>';
   break;
