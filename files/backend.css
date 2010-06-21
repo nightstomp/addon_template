@@ -8,7 +8,7 @@
 * $Id: help.inc.php 68 2010-04-06 15:30:24Z jeffe $:
 */
 
-/*	OVERRIDES FÜR css_form.css */
+/* OVERRIDES FÜR css_form.css */
 
   div.rex-form div.rex-form-row p.rex-form-radio label
   {
@@ -17,6 +17,7 @@
     margin:0 20px 0 0;
     padding:0;
   }
+
   div.rex-form div.rex-form-row p.rex-form-radio span
   {
     clear: both;
@@ -30,6 +31,14 @@
 span.addonversion {
   font-size:10px;
   color:silver;
+  }
+
+/* ADDON CHAPTER-LINKS */
+a.jsopenwin,
+a.blank,
+span.jsopenwin {
+  padding-right:16px;
+  background:url('../files/addons/addon_template/jsopenwin.gif') no-repeat 100% 0 ;
   }
 
 /* ADDON CONTENT */

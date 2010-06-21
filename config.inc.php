@@ -7,7 +7,7 @@
 *
 * @package redaxo4
 * @version 1.0
-* $Id$: 
+* $Id$:
 */
 
 // ADDON IDENTIFIER & ROOT DIR
@@ -44,7 +44,7 @@ $REX['ADDON'][$myself]['autoincludes'] = array(
 // DYNAMIC ADDON SETTINGS
 ////////////////////////////////////////////////////////////////////////////////
 // --- DYN
-$REX["ADDON"]["addon_template"]["option1"] = 2; 
+$REX["ADDON"]["addon_template"]["option1"] = 2;
 $REX["ADDON"]["addon_template"]["option2"] = 1;
 // --- /DYN
 
@@ -60,7 +60,7 @@ if ($REX['REDAXO']) {
   foreach($staticfunctions as $include) {
     require_once $myroot.'/functions/'.$include;
   }
-  
+
   // AUTO INCLUDE FUNCTIONS
   if($REX['ADDON'][$myself]['autoincludes']['functions']) {
     $autofunctions = rexdev_scandir($myroot.'/functions',1,$staticfunctions,array('function.*'));
@@ -70,7 +70,7 @@ if ($REX['REDAXO']) {
       }
     }
   }
-  
+
   // AUTO INCLUDE CLASSES
   if($REX['ADDON'][$myself]['autoincludes']['classes']) {
     $autoclasses = rexdev_scandir($myroot.'/classes',1,array(),array('class.*'));
@@ -79,17 +79,19 @@ if ($REX['REDAXO']) {
         require_once $myroot.'/classes/'.$include;
       }
     }
-    
+
   }
 }
 
 // BACKEND CSS
 ////////////////////////////////////////////////////////////////////////////////
-$backendcss = '<link rel="stylesheet" type="text/css" href="../files/addons/'.$myself.'/backend.css" />';
+$header = array(
+'  <link rel="stylesheet" type="text/css" href="../files/addons/'.$myself.'/backend.css" media="screen, projection, print" />'
+);
 
 if ($REX['REDAXO']) {
-  include_once $myroot.'/functions/function.rexdev_css_add.inc.php';
-  rex_register_extension('PAGE_HEADER', 'rexdev_css_add',array('css'=>$backendcss));
+  include_once $myroot.'/functions/function.rexdev_header_add.inc.php';
+  rex_register_extension('PAGE_HEADER', 'rexdev_header_add',$header);
 }
 
 
