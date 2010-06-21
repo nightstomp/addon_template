@@ -6,7 +6,7 @@ $root = $REX['INCLUDE_PATH'].'/addons/'.$myself.'/';
 echo '<div class="rex-addon-output">
   <h2 class="rex-hl2" style="font-size:1em">rexdev_scandir() Tests</h2>
   <div class="rex-addon-content">
-  <div class= "firephp">';
+  <div class="addon-template">';
 
 /* ----------------------------- SCANDIR TEST ------------------------------- */
 

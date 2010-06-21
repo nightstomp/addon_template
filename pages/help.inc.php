@@ -7,7 +7,7 @@
 *
 * @package redaxo4
 * @version 1.0
-* $Id$: 
+* $Id$:
 */
 
 // GET PARAMS
@@ -20,11 +20,12 @@ $func    = rex_request('func',    'string');
 // SUBNAVIGATION ITEMS
 ////////////////////////////////////////////////////////////////////////////////
 $chapterpages = array (
-''           => array('Readme','_readme.txt','textile'),
-'changelog'  => array('Changelog','_changelog.txt','textile'),
-'iframelink' => array('Externer link (iframe)','http://rexdev.de','iframe'),
-'newwinlink' => array('Externer link (neues Fenster)','http://rexdev.de','jsopenwin'),
-'php'        => array('PHP include','pages/php_include_examle.php','php')
+''                => array('Readme'                  ,'_readme.txt'                 ,'textile'),
+'changelog'       => array('Changelog'               ,'_changelog.txt'              ,'textile'),
+'text_demo'       => array('<i>TXT include</i>'      ,'pages/txt_include_examle.txt','txt'),
+'php_demo'        => array('<i>PHP include</i>'      ,'pages/php_include_examle.php','php'),
+'iframelink_demo' => array('<i>Link (iframe)</i>'    ,'http://redaxo.de'            ,'iframe'),
+'newwinlink_demo' => array('<i>Link (neues Fenster)' ,'http://redaxo.de'            ,'jsopenwin')
 );
 
 // BUILD CHAPTER NAVIGATION
@@ -33,76 +34,29 @@ $chapternav = '';
 foreach ($chapterpages as $chapterparam => $chapterprops)
 {
   if ($chapter != $chapterparam) {
-    $chapternav .= ' | <a href="?page='.$myself.'&subpage=help&chapter='.$chapterparam.'">'.$chapterprops[0].'</a>';
+    $chapternav .= ' | <a href="?page='.$myself.'&subpage=help&chapter='.$chapterparam.'" class="chapter '.$chapterparam.' '.$chapterprops[2].'">'.$chapterprops[0].'</a>';
   } else {
-    $chapternav .= ' | '.$chapterprops[0];
+    $chapternav .= ' | <span class="chapter '.$chapterparam.' '.$chapterprops[2].'">'.$chapterprops[0].'</span>';
   }
 }
 $chapternav = ltrim($chapternav, " | ");
 
-// SWITCH PARSEMODES & BUILD OUTPUT
+// BUILD CHAPTER OUTPUT
 ////////////////////////////////////////////////////////////////////////////////
 $addonroot = $REX['INCLUDE_PATH']. '/addons/'.$myself.'/';
 $source    = $chapterpages[$chapter][1];
 $parse     = $chapterpages[$chapter][2];
 
-function get_include_contents($filename) {
-  if (is_file($filename)) {
-    ob_start();
-    include $filename;
-    $contents = ob_get_contents();
-    ob_end_clean();
-    return $contents;
-  }
-  return false;
-}
+$html = rexdev_incparse($addonroot,$source,$parse,true);
 
-switch ($parse)
-{
-  case 'textile':
-  $source = $addonroot.$source;
-  $content = file_get_contents($source);
-  $html = textile_parser($content);
-  break;
-  
-  case 'txt':
-  $source = $addonroot.$source;
-  $content = file_get_contents($source);
-  $html =  '<pre class="plain">'.$content.'</pre>';
-  break;
-  
-  case 'raw':
-  $source = $addonroot.$source;
-  $content = file_get_contents($source);
-  $html = $content;
-  break;
-  
-  case 'php':
-  $source = $addonroot.$source;
-  $html =  get_include_contents($source);
-  break;
-  
-  case 'iframe':
-  $html = '<iframe src="'.$source.'" width="99%" height="600px"></iframe>';
-  break;
-  
-  case 'jsopenwin':
-  $html = 'Externer link: <a href="'.$source.'">'.$source.'</a>
-  <script language="JavaScript">
-  <!--
-  window.open(\''.$source.'\',\''.$source.'\');
-  //-->
-  </script>';
-  break;
-}
 
-// ADDON OUTPUT
+// OUTPUT
 ////////////////////////////////////////////////////////////////////////////////
 echo '
 <div class="rex-addon-output">
   <h2 class="rex-hl2" style="font-size:1em">'.$chapternav.'</h2>
   <div class="rex-addon-content">
-    <div class= "rexdev">
+    <div class= "rexseo">
     '.$html.'
     </div>
   </div>

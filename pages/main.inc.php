@@ -7,7 +7,7 @@
 *
 * @package redaxo4
 * @version 1.0
-* $Id$: 
+* $Id$:
 */
 
 // GET PARAMS
@@ -20,7 +20,7 @@ $func    = rex_request('func',    'string');
 echo '<div class="rex-addon-output">
   <h2 class="rex-hl2" style="font-size:1em">Überschrift..</h2>
   <div class="rex-addon-content">
-  <div class= "firephp">';
+  <div class="addon-template">';
 
 
 /* ---------------------------- ADDON PAYLOAD ------------------------------- */
