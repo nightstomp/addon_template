@@ -16,6 +16,10 @@ blah('frzlbrmpft');
 echo '</pre>';
 
 echo '<pre>';
+echo $root."\n";
+echo '</pre>';
+
+echo '<pre>';
 highlight_string(
 "<?php\n\n// rexdev_scandir(\$myroot.'/functions',1,array('function.rex_addon_template_css_add.inc.php','function.textile_parser.inc.php','function.rexdev_scandir.inc.php'),array('function.*'))) \n\n".
 print_r(rexdev_scandir($myroot.'/functions',1,array('function.rex_addon_template_css_add.inc.php','function.textile_parser.inc.php','function.rexdev_scandir.inc.php'),array('function.*')),true).
