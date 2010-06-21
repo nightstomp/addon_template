@@ -34,13 +34,6 @@ $REX['ADDON']['author'][$myself] = "rexdev.de";
 $REX['ADDON']['supportpage'][$myself] = "forum.redaxo.de";
 $REX['PERM'][] = $myself.'[]';
 
-// CONTROL AUTOMATED INCLUDES
-////////////////////////////////////////////////////////////////////////////////
-$REX['ADDON'][$myself]['autoincludes'] = array(
-'functions'  => true,
-'classes'    => true
-);
-
 // DYNAMIC ADDON SETTINGS
 ////////////////////////////////////////////////////////////////////////////////
 // --- DYN
@@ -48,38 +41,20 @@ $REX["ADDON"]["addon_template"]["option1"] = 2;
 $REX["ADDON"]["addon_template"]["option2"] = 1;
 // --- /DYN
 
-// INCLUDES
+// AUTO INCLUDES
 ////////////////////////////////////////////////////////////////////////////////
-$staticfunctions = array(
-  'function.rexdev_scandir.inc.php',
-  'function.textile_parser.inc.php'
-);
-
-if ($REX['REDAXO']) {
-  // STATIC
-  foreach($staticfunctions as $include) {
-    require_once $myroot.'/functions/'.$include;
-  }
-
+if ($REX['REDAXO'])
+{
   // AUTO INCLUDE FUNCTIONS
-  if($REX['ADDON'][$myself]['autoincludes']['functions']) {
-    $autofunctions = rexdev_scandir($myroot.'/functions',1,$staticfunctions,array('function.*'));
-    if($autofunctions) {
-      foreach($autofunctions['files'] as $include) {
-        require_once $myroot.'/functions/'.$include;
-      }
-    }
+  foreach (glob($myroot.'/functions/function.*.inc.php') as $include)
+  {
+    require_once $include;
   }
 
   // AUTO INCLUDE CLASSES
-  if($REX['ADDON'][$myself]['autoincludes']['classes']) {
-    $autoclasses = rexdev_scandir($myroot.'/classes',1,array(),array('class.*'));
-    if($autoclasses) {
-      foreach($autoclasses['files'] as $include) {
-        require_once $myroot.'/classes/'.$include;
-      }
-    }
-
+  foreach (glob($myroot.'/classes/class.*.inc.php') as $include)
+  {
+    require_once $include;
   }
 }
 
@@ -90,7 +65,6 @@ $header = array(
 );
 
 if ($REX['REDAXO']) {
-  include_once $myroot.'/functions/function.rexdev_header_add.inc.php';
   rex_register_extension('PAGE_HEADER', 'rexdev_header_add',$header);
 }
 

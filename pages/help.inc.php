@@ -56,7 +56,7 @@ echo '
 <div class="rex-addon-output">
   <h2 class="rex-hl2" style="font-size:1em">'.$chapternav.'</h2>
   <div class="rex-addon-content">
-    <div class= "rexseo">
+    <div class= "addon-template">
     '.$html.'
     </div>
   </div>

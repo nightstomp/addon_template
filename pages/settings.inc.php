@@ -7,7 +7,7 @@
 *
 * @package redaxo4
 * @version 1.0
-* $Id$: 
+* $Id$:
 */
 
 // PARAMS
@@ -26,8 +26,8 @@ if ($func == "update") {
   $REX['ADDON'][$myself]['option1'] = $option1;
   $REX['ADDON'][$myself]['option2'] = $option2;
 
-  $content = 
-'$REX["ADDON"]["addon_template"]["option1"] = '.$option1.'; 
+  $content =
+'$REX["ADDON"]["addon_template"]["option1"] = '.$option1.';
 $REX["ADDON"]["addon_template"]["option2"] = '.$option2.';
 ';
 
@@ -80,7 +80,7 @@ echo '
     <input type="hidden" name="func" value="update" />
 
         <fieldset class="rex-form-col-1">
-          <legend>Legend Option 1</legend>
+          <legend>Fieldset 1</legend>
           <div class="rex-form-wrapper">
 
             <div class="rex-form-row">
@@ -96,7 +96,7 @@ echo '
         </fieldset>
 
         <fieldset class="rex-form-col-1">
-          <legend>Legend Option 2</legend>
+          <legend>Fieldset 2</legend>
           <div class="rex-form-wrapper">
 
           <div class="rex-form-row">

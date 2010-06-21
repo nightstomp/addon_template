@@ -1,4 +1,4 @@
-bc. Dies ist der Textile formatierte Inhalt der Datei "_readme.txt"
+bc. Dies ist der Inhalt der Textile formatierten Datei "_readme.txt"
 
 h1. Überschrift 1. Ordnung
 
