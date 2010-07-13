@@ -10,17 +10,20 @@
 * $Id$:
 */
 
-// ADDON IDENTIFIER & ROOT DIR
+// ADDON IDENTIFIER AUS ORDNERNAMEN ABLEITEN
 ////////////////////////////////////////////////////////////////////////////////
-$myself = 'addon_template';
+$myself = explode('/redaxo/include/addons/',__FILE__);
+$myself = explode('/',$myself[1]);
+$myself = $myself[0];
 $myroot = $REX['INCLUDE_PATH'].'/addons/'.$myself;
 
 // ADDON VERSION
 ////////////////////////////////////////////////////////////////////////////////
-$REX['ADDON'][$myself]['VERSION'] = array(
+$REX['ADDON'][$myself]['VERSION'] = array
+(
 'VERSION'      => 0,
-'MINORVERSION' => 5,
-'SUBVERSION'   => 0
+'MINORVERSION' => 0,
+'SUBVERSION'   => 1
 );
 
 // ADDON REX COMMONS
@@ -34,12 +37,25 @@ $REX['ADDON']['author'][$myself] = "rexdev.de";
 $REX['ADDON']['supportpage'][$myself] = "forum.redaxo.de";
 $REX['PERM'][] = $myself.'[]';
 
-// DYNAMIC ADDON SETTINGS
+// ADDON SETTINGS
 ////////////////////////////////////////////////////////////////////////////////
+/* dynamisch: Werte kommen aus dem "Einstellungen" Formular */
 // --- DYN
-$REX["ADDON"]["addon_template"]["option1"] = 2;
-$REX["ADDON"]["addon_template"]["option2"] = 1;
+$REX["ADDON"]["addon_template"]["settings"]["textinput1"] = '$irgendwas..';
+$REX["ADDON"]["addon_template"]["settings"]["textarea1"] = 'fasel \"blub\" \'bäh\' isoleé';
+$REX["ADDON"]["addon_template"]["settings"]["demo_select"] = '0';
+$REX["ADDON"]["addon_template"]["settings"]["demo_multiselect"] = '1';
+$REX["ADDON"]["addon_template"]["settings"]["MEDIA"] = array (
+  1 => 'navigation.css',
+  2 => 'main.css',
+);
+$REX["ADDON"]["addon_template"]["settings"]["MEDIALIST"] = array (
+  1 => '',
+);
 // --- /DYN
+
+/* fixe Einstellungen */
+$REX["ADDON"]["addon_template"]["settings"]["debug"] = true;
 
 // AUTO INCLUDES
 ////////////////////////////////////////////////////////////////////////////////
