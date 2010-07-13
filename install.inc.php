@@ -7,7 +7,7 @@
 *
 * @package redaxo4
 * @version 1.0
-* $Id$: 
+* $Id$:
 */
 
 // ADDON IDENTIFIER
@@ -16,9 +16,12 @@ $myself = "addon_template";
 
 // INSTALL CONDITIONS
 ////////////////////////////////////////////////////////////////////////////////
-$do_install = true;
 $requiered_PHP = 5;
 $requiered_addons = array('phpmailer','textile');
+
+// MAIN
+////////////////////////////////////////////////////////////////////////////////
+$do_install = true;
 
 /* PHP CHECK */
 if (intval(PHP_VERSION) < $requiered_PHP)
@@ -43,12 +46,12 @@ foreach($requiered_addons as $a)
       $REX['ADDON']['installmsg'][$myself] = '<br />Addon "'.$a.'" ist nicht aktiviert.  >>> <a href="index.php?page=addon&addonname='.$a.'&activate=1">jetzt aktivieren</a> <<<';
       $do_install = false;
     }
-    
+
   }
 }
 
 if ($do_install)
-{ 
+{
 	$REX['ADDON']['install'][$myself] = 1;
 }
 
