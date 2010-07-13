@@ -45,7 +45,10 @@ $REX['PERM'][] = $myself.'[]';
 $REX["ADDON"]["addon_template"]["settings"]["textinput1"] = '$irgendwas..';
 $REX["ADDON"]["addon_template"]["settings"]["textarea1"] = 'fasel \"blub\" \'bäh\' isoleé';
 $REX["ADDON"]["addon_template"]["settings"]["demo_select"] = '1';
-$REX["ADDON"]["addon_template"]["settings"]["demo_multiselect"] = '2';
+$REX["ADDON"]["addon_template"]["settings"]["demo_multiselect"] = array (
+  0 => '2',
+  1 => 'fasel',
+);
 $REX["ADDON"]["addon_template"]["settings"]["MEDIA"] = array (
   1 => 'screenshot_content_edit.png',
 );
@@ -59,7 +62,7 @@ $REX["ADDON"]["addon_template"]["settings"]["rex-component-userinfo-articles_sta
 // --- /DYN
 
 /* fixe Einstellungen */
-$REX["ADDON"]["addon_template"]["settings"]["debug"] = false;
+$REX["ADDON"]["addon_template"]["settings"]["debug"] = true;
 
 // AUTO INCLUDES
 ////////////////////////////////////////////////////////////////////////////////

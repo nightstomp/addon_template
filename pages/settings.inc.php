@@ -46,12 +46,12 @@ if ($func == 'savesettings')
   echo rex_info('Einstellungen wurden gespeichert.');
 }
 
-// rexTinyMCEEditor-Klasse
+/*// rexTinyMCEEditor-Klasse
 include_once $REX['INCLUDE_PATH'] . '/addons/tinymce/classes/class.tinymce.inc.php';
 // Funktionen für TinyMCE
 include_once $REX['INCLUDE_PATH'] . '/addons/tinymce/functions/function_rex_tinymce.inc.php';
 // Kompatibilitäts-Funktionen
-include_once $REX['INCLUDE_PATH'] . '/addons/tinymce/functions/function_rex_compat.inc.php';
+include_once $REX['INCLUDE_PATH'] . '/addons/tinymce/functions/function_rex_compat.inc.php';*/
 
 // EINFACHE SELECT BOX
 ////////////////////////////////////////////////////////////////////////////////
@@ -68,7 +68,8 @@ $demo_select->setSelected($REX['ADDON']['addon_template']['settings']['demo_sele
 $demo_multiselect = new rex_select();
 $demo_multiselect->setSize(4);
 $demo_multiselect->setMultiple(true);
-$demo_multiselect->setName('demo_multiselect');
+$demo_multiselect->setName('demo_multiselect[]'); // abschließendes [] wichtig!
+$demo_multiselect->setAttribute('class','rex-form-select'); // optional
 $demo_multiselect->addOption('Nein',1);
 $demo_multiselect->addOption('blah..',2);
 $demo_multiselect->addOption('fasel..','fasel');
