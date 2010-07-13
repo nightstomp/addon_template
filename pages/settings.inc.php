@@ -10,9 +10,7 @@
 * $MID: settings.inc.php 30 2010-06-21 02:58:00Z jeffe $:
 */
 
-// DEBUG MODE
-////////////////////////////////////////////////////////////////////////////////
-$db = $REX['ADDON']['addon_template']['settings']['debug'];
+// echo '<pre>'.var_export($_REQUEST,true).'</pre>';}
 
 // ADDON PARAMETER AUS URL HOLEN
 ////////////////////////////////////////////////////////////////////////////////
@@ -21,16 +19,20 @@ $subpage   = rex_request('subpage', 'string');
 $minorpage = rex_request('minorpage', 'string');
 $func      = rex_request('func'   , 'string');
 
+// ADDON RELEVANTES AUS $REX HOLEN
+////////////////////////////////////////////////////////////////////////////////
+$myREX = $REX['ADDON'][$myself];
+
 // FORMULAR PARAMETER SPEICHERN
 ////////////////////////////////////////////////////////////////////////////////
 if ($func == 'savesettings')
 {
   $content = '';
-  foreach($_REQUEST as $key => $val)
+  foreach($_GET as $key => $val)
   {
     if(!in_array($key,array('page','subpage','minorpage','func','submit','PHPSESSID')))
     {
-      $REX['ADDON'][$myself]['settings'][$key] = $val;
+      $myREX['settings'][$key] = $val;
       if(is_array($val))
       {
         $content .= '$REX["ADDON"]["'.$myself.'"]["settings"]["'.$key.'"] = '.var_export($val,true).';'."\n";
@@ -46,59 +48,68 @@ if ($func == 'savesettings')
   echo rex_info('Einstellungen wurden gespeichert.');
 }
 
-/*// rexTinyMCEEditor-Klasse
-include_once $REX['INCLUDE_PATH'] . '/addons/tinymce/classes/class.tinymce.inc.php';
-// Funktionen für TinyMCE
-include_once $REX['INCLUDE_PATH'] . '/addons/tinymce/functions/function_rex_tinymce.inc.php';
-// Kompatibilitäts-Funktionen
-include_once $REX['INCLUDE_PATH'] . '/addons/tinymce/functions/function_rex_compat.inc.php';*/
-
-// EINFACHE SELECT BOX
+// SELECT BOX
 ////////////////////////////////////////////////////////////////////////////////
-$demo_select = new rex_select();
-$demo_select->setSize(1);
-$demo_select->setName('demo_select');
-$demo_select->addOption('inaktiv',0);
-$demo_select->addOption('foo..',1);
-$demo_select->addOption('bar..',2);
-$demo_select->setSelected($REX['ADDON']['addon_template']['settings']['demo_select']);
+$tmp = new rex_select();                                   // rex_select Objekt initialisieren
+$tmp->setSize(1);                                          // 1 Zeilen = normale Selectbox
+$tmp->setName('select');
+$tmp->addOption('inaktiv',0);                              // Beschreibung ['string'], Wert [int|'string']
+$tmp->addOption('foo..',1);
+$tmp->addOption('bar..',2);
+$tmp->setSelected($myREX['settings']['select']);      // gespeicherte Werte einsetzen
+$select = $tmp->get();                                // HTML in Variable speichern
 
-// MULTI SELECT BOX
+// MULTISELECT BOX
 ////////////////////////////////////////////////////////////////////////////////
-$demo_multiselect = new rex_select();
-$demo_multiselect->setSize(4);
-$demo_multiselect->setMultiple(true);
-$demo_multiselect->setName('demo_multiselect[]'); // abschließendes [] wichtig!
-$demo_multiselect->setAttribute('class','rex-form-select'); // optional
-$demo_multiselect->addOption('Nein',1);
-$demo_multiselect->addOption('blah..',2);
-$demo_multiselect->addOption('fasel..','fasel');
-$demo_multiselect->setSelected($REX['ADDON']['addon_template']['settings']['demo_multiselect']);
+$tmp = new rex_select();                                   // rex_select Objekt initialisieren
+$tmp->setSize(4);                                          // angezeigte Zeilen, Rest wird gescrollt
+$tmp->setMultiple(true);
+$tmp->setName('multiselect[]');                       // abschließendes [] wichtig!
+$tmp->addOption('Nein',1);                                 // Beschreibung ['string'], Wert [int|'string']
+$tmp->addOption('blah..',2);
+$tmp->addOption('fasel..','fasel');
+$tmp->setSelected($myREX['settings']['multiselect']); // gespeicherte Werte einsetzen
+$multiselect = $tmp->get();                           // HTML in Variable speichern
 
 // MEDIA BUTTON
 ////////////////////////////////////////////////////////////////////////////////
-/*works*/
-$MediaButton1 = rex_input::factory('mediabutton');
-$MediaButton1->setButtonId(1);
-$MediaButton1->setCategoryId(1);
-$MediaButton1->setValue($REX["ADDON"]["addon_template"]["settings"]["MEDIA"][1]);
-$MediaButton1->setAttribute('name', 'MEDIA[1]');
-$MediaButton1 = $MediaButton1->getHtml();
+$id = 1;                                                   // eindeutige Button ID
+$mp = 7;                                                   // ID der auzurufenden Medienpool Kategorie
+$tmp = rex_input::factory('mediabutton');                  // Objekt initialisieren
+$tmp->setButtonId($id);                                    // Button ID
+$tmp->setCategoryId($mp);                                  // Medienpool Kategorie ID
+$tmp->setValue($myREX['settings']['MEDIA'][$id]);          // gespeicherte Werte einsetzen
+$tmp->setAttribute('name', 'MEDIA['.$id.']');
+$MediaButton1 = $tmp->getHtml();
 
-/* WORKS */
-$MediaButton2 = rex_var_media::getMediaButton(2,1);
-$MediaButton2 = str_replace('REX_MEDIA[2]',$REX["ADDON"]["addon_template"]["settings"]["MEDIA"][2],$MediaButton2);
+// MEDIALIST BUTTON
+////////////////////////////////////////////////////////////////////////////////
+$id = 1;                                                   // eindeutige Button ID
+$mp = 4;                                                   // ID der auzurufenden Medienpool Kategorie
+$tmp = rex_input::factory('medialistbutton');              // Objekt initialisieren
+$tmp->setButtonId($id);                                    // Button ID
+$tmp->setCategoryId($mp);                                  // Medienpool Kategorie ID
+$tmp->setValue($myREX['settings']['MEDIALIST'][$id]);      // gespeicherte Werte einsetzen
+$tmp->setAttribute('name', 'MEDIALIST['.$id.']');
+$MediaList2 = $tmp->getHtml();
 
-/* NOT */
-$MediaButton3 = new rex_input_mediabutton();
-$MediaButton3->setButtonId(3);
-$MediaButton3->setCategoryId(1);
-$MediaButton3->setValue($REX["ADDON"]["addon_template"]["settings"]["MEDIA"][3]);
-$MediaButton3->setTypes('name', 'MEDIA[3]');
-$MediaButton3 = $MediaButton3->getHtml();
+// LINK BUTTON
+////////////////////////////////////////////////////////////////////////////////
+$id = 1;                                                   // eindeutige Button ID
+$tmp = rex_input::factory('linkbutton');              // Objekt initialisieren
+$tmp->setButtonId($id);                                    // Button ID
+$tmp->setValue($myREX['settings']['LINK'][$id]);      // gespeicherte Werte einsetzen
+$tmp->setAttribute('name', 'LINK['.$id.']');
+$Link1 = $tmp->getHtml();
 
-
-if($db){echo '<pre>'.var_export($_REQUEST,true).'</pre>';}
+// LINK BUTTON
+////////////////////////////////////////////////////////////////////////////////
+$id = 1;                                                   // eindeutige Button ID
+$tmp = rex_input::factory('linklistbutton');              // Objekt initialisieren
+$tmp->setButtonId($id);                                    // Button ID
+$tmp->setValue($myREX['settings']['LINKLIST'][$id]);      // gespeicherte Werte einsetzen
+$tmp->setAttribute('name', 'LINKLIST['.$id.']');
+$Linklist1 = $tmp->getHtml();
 
 echo '
 <div class="rex-addon-output">
@@ -116,14 +127,14 @@ echo '
             <div class="rex-form-row">
               <p class="rex-form-col-a rex-form-text">
                 <label for="textinput1">Ein Textfeld</label>
-                <input id="textinput1" class="rex-form-text" type="text" name="textinput1" value="'.stripslashes($REX['ADDON'][$myself]['settings']['textinput1']).'" />
+                <input id="textinput1" class="rex-form-text" type="text" name="textinput1" value="'.stripslashes($myREX['settings']['textinput1']).'" />
               </p>
             </div><!-- .rex-form-row -->
 
             <div class="rex-form-row">
               <p class="rex-form-col-a rex-form-textarea">
                 <label for="textarea1">Eine Textarea</label>
-                <textarea id="textarea1" cols="50" rows="6" class="rex-form-textarea" name="textarea1">'.stripslashes($REX['ADDON'][$myself]['settings']['textarea1']).'</textarea>
+                <textarea id="textarea1" cols="50" rows="6" class="rex-form-textarea" name="textarea1">'.stripslashes($myREX['settings']['textarea1']).'</textarea>
               </p>
             </div><!-- .rex-form-row -->
 
@@ -137,14 +148,14 @@ echo '
             <div class="rex-form-row">
               <p class="rex-form-col-a rex-form-select">
                 <label for="demo_select">Selectbox</label>
-                '.$demo_select->get().'
+                '.$select.'
               </p>
             </div><!-- .rex-form-row -->
 
           <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">
               <label for="demo_multiselect">Multi-Selectbox</label>
-                '.$demo_multiselect->get().'
+                '.$multiselect.'
             </p>
           </div><!-- .rex-form-row -->
 
@@ -162,29 +173,10 @@ echo '
               </div><!-- .rex-form-col-a -->
             </div><!-- .rex-form-row -->
 
-            <!--<div class="rex-form-row">
-              <div class="rex-form-col-a">
-              <label for="REX_MEDIA_2">Mediabutton 2</label>
-            '.$MediaButton2.'
-              </div><!-- .rex-form-col-a -->
-            </div><!-- .rex-form-row -->
-
-            <div class="rex-form-row">
-              <div class="rex-form-col-a">
-              <label for="REX_MEDIA_'.$MID.'">Mediabutton</label>
-'
-//.rex_input_mediabutton(1,1,'blah.gif')
-//.$MEDIA->getHtml()
-.$MediaButton3
-//.rex_var_media::getMediaButton(1,1,array('blah.gif'))
-.'
-              </div><!-- .rex-form-col-a -->
-            </div><!-- .rex-form-row -->-->
-
             <div class="rex-form-row">
               <div class="rex-form-col-a">
                 <label for="REX_MEDIALIST_1">Medialist</label>
-'.rex_var_media::getMediaListButton(1,$REX['ADDON'][$myself]['settings']['MEDIALIST'][1]).'
+               '.$MediaList1.'
               </div><!-- .rex-form-col-a -->
             </div><!-- .rex-form-row -->
 
@@ -195,11 +187,25 @@ echo '
           <legend>Artikel links</legend>
           <div class="rex-form-wrapper">
 
-          <div class="rex-form-row rex-form-element-v2">
-            <p class="rex-form-submit">
-              <input class="rex-form-submit" type="submit" id="submit" name="submit" value="Einstellungen speichern" />
-            </p>
-          </div><!-- .rex-form-row -->
+            <div class="rex-form-row">
+              <div class="rex-form-col-a">
+                <label for="REX_LINK_1">Linkbutton</label>
+               '.$Link1.'
+              </div><!-- .rex-form-col-a -->
+            </div><!-- .rex-form-row -->
+
+            <div class="rex-form-row">
+              <div class="rex-form-col-a">
+                <label for="REX_LINKLIST_1">Linkbutton</label>
+               '.$Linklist1.'
+              </div><!-- .rex-form-col-a -->
+            </div><!-- .rex-form-row -->
+
+            <div class="rex-form-row rex-form-element-v2">
+              <p class="rex-form-submit">
+                <input class="rex-form-submit" type="submit" id="submit" name="submit" value="Einstellungen speichern" />
+              </p>
+            </div><!-- .rex-form-row -->
 
           </div><!-- .rex-form-wrapper -->
         </fieldset>

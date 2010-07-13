@@ -54,11 +54,17 @@ $REX["ADDON"]["addon_template"]["settings"]["MEDIA"] = array (
 );
 $REX["ADDON"]["addon_template"]["settings"]["MEDIALIST"] = array (
   1 => 'button.gif,redaxo_logo_klein.gif,linie_start_block.gif',
+  2 => 'thomas.gif,markus.gif,jan.gif',
 );
-$REX["ADDON"]["addon_template"]["settings"]["rex-component-rss-reader_state"] = 'minimized';
-$REX["ADDON"]["addon_template"]["settings"]["rex-component-notifications_state"] = 'minimized';
-$REX["ADDON"]["addon_template"]["settings"]["rex-component-userinfo-media_state"] = 'maximized';
-$REX["ADDON"]["addon_template"]["settings"]["rex-component-userinfo-articles_state"] = 'maximized';
+$REX["ADDON"]["addon_template"]["settings"]["LINK"] = array (
+  1 => '25',
+);
+$REX["ADDON"]["addon_template"]["settings"]["LINK_NAME"] = array (
+  1 => 'error 404',
+);
+$REX["ADDON"]["addon_template"]["settings"]["LINKLIST"] = array (
+  1 => '33,32,31,30,29',
+);
 // --- /DYN
 
 /* fixe Einstellungen */
