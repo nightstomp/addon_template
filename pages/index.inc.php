@@ -7,15 +7,13 @@
 *
 * @package redaxo4
 * @version 1.0
-* $Id$: 
+* $Id$:
 */
 
 // GET PARAMS
 ////////////////////////////////////////////////////////////////////////////////
-$myself = rex_request('page', 'string');
+$myself  = rex_request('page', 'string');
 $subpage = rex_request('subpage', 'string');
-$chapter = rex_request('chapter', 'string');
-$func = rex_request('func', 'string');
 
 // REX BACKEND LAYOUT TOP
 ////////////////////////////////////////////////////////////////////////////////
@@ -24,11 +22,10 @@ require $REX['INCLUDE_PATH'] . '/layout/top.php';
 // DEFINE SUBPAGES
 ////////////////////////////////////////////////////////////////////////////////
 $subpages = array (
-  array ('','Default Seite'),
-  array ('settings','Einstellungen'),
-  array ('help','Hilfe'),
-  array ('scandir','Scandir Test'),
-  array ('rexinclude','RexInclude Test')
+  array ('','Addon Einstellungen'),
+  array ('settings_xform','XForm'),
+  array ('database','Addon DB Tabelle'),
+  array ('help','Hilfe')
 );
 
 // TITLE & SUBPAGE NAVIGATION
@@ -40,7 +37,7 @@ rex_title($REX['ADDON']['name'][$myself].' <span class="addonversion">'.$version
 ////////////////////////////////////////////////////////////////////////////////
 if(!$subpage)
 {
-  $subpage = 'main';  /* DEFAULT SUBPAGE */
+  $subpage = 'settings';  /* DEFAULT SUBPAGE */
 }
 require $REX['INCLUDE_PATH'] . '/addons/'.$myself.'/pages/'.$subpage.'.inc.php';
 
