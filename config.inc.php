@@ -44,15 +44,18 @@ $REX['PERM'][] = $myself.'[]';
 // --- DYN
 $REX["ADDON"]["addon_template"]["settings"]["textinput1"] = '$irgendwas..';
 $REX["ADDON"]["addon_template"]["settings"]["textarea1"] = 'fasel \"blub\" \'bäh\' isoleé';
-$REX["ADDON"]["addon_template"]["settings"]["demo_select"] = '0';
-$REX["ADDON"]["addon_template"]["settings"]["demo_multiselect"] = '1';
+$REX["ADDON"]["addon_template"]["settings"]["demo_select"] = '1';
+$REX["ADDON"]["addon_template"]["settings"]["demo_multiselect"] = '2';
 $REX["ADDON"]["addon_template"]["settings"]["MEDIA"] = array (
-  1 => 'navigation.css',
-  2 => 'main.css',
+  1 => 'screenshot_content_edit.png',
 );
 $REX["ADDON"]["addon_template"]["settings"]["MEDIALIST"] = array (
-  1 => '',
+  1 => 'button.gif,redaxo_logo_klein.gif,linie_start_block.gif',
 );
+$REX["ADDON"]["addon_template"]["settings"]["rex-component-rss-reader_state"] = 'minimized';
+$REX["ADDON"]["addon_template"]["settings"]["rex-component-notifications_state"] = 'minimized';
+$REX["ADDON"]["addon_template"]["settings"]["rex-component-userinfo-media_state"] = 'maximized';
+$REX["ADDON"]["addon_template"]["settings"]["rex-component-userinfo-articles_state"] = 'maximized';
 // --- /DYN
 
 /* fixe Einstellungen */

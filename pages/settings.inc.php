@@ -156,12 +156,12 @@ echo '
 
             <div class="rex-form-row">
               <div class="rex-form-col-a">
-              <label for="REX_MEDIA_1">Mediabutton 1</label>
+              <label for="REX_MEDIA_1">Mediabutton</label>
             '.$MediaButton1.'
               </div><!-- .rex-form-col-a -->
             </div><!-- .rex-form-row -->
 
-            <div class="rex-form-row">
+            <!--<div class="rex-form-row">
               <div class="rex-form-col-a">
               <label for="REX_MEDIA_2">Mediabutton 2</label>
             '.$MediaButton2.'
@@ -178,7 +178,7 @@ echo '
 //.rex_var_media::getMediaButton(1,1,array('blah.gif'))
 .'
               </div><!-- .rex-form-col-a -->
-            </div><!-- .rex-form-row -->
+            </div><!-- .rex-form-row -->-->
 
             <div class="rex-form-row">
               <div class="rex-form-col-a">
