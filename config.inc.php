@@ -55,7 +55,7 @@ $REX["ADDON"]["addon_template"]["settings"]["MEDIALIST"] = array (
 // --- /DYN
 
 /* fixe Einstellungen */
-$REX["ADDON"]["addon_template"]["settings"]["debug"] = true;
+$REX["ADDON"]["addon_template"]["settings"]["debug"] = false;
 
 // AUTO INCLUDES
 ////////////////////////////////////////////////////////////////////////////////

@@ -46,6 +46,13 @@ if ($func == 'savesettings')
   echo rex_info('Einstellungen wurden gespeichert.');
 }
 
+// rexTinyMCEEditor-Klasse
+include_once $REX['INCLUDE_PATH'] . '/addons/tinymce/classes/class.tinymce.inc.php';
+// Funktionen für TinyMCE
+include_once $REX['INCLUDE_PATH'] . '/addons/tinymce/functions/function_rex_tinymce.inc.php';
+// Kompatibilitäts-Funktionen
+include_once $REX['INCLUDE_PATH'] . '/addons/tinymce/functions/function_rex_compat.inc.php';
+
 // EINFACHE SELECT BOX
 ////////////////////////////////////////////////////////////////////////////////
 $demo_select = new rex_select();
@@ -90,14 +97,7 @@ $MediaButton3->setTypes('name', 'MEDIA[3]');
 $MediaButton3 = $MediaButton3->getHtml();
 
 
-/*if($db){echo '<pre>'.var_export($_REQUEST,true).'</pre>';}
-    // rexTinyMCEEditor-Klasse
-    include_once $REX['INCLUDE_PATH'] . '/addons/tinymce/classes/class.tinymce.inc.php';
-    // Funktionen für TinyMCE
-    include_once $REX['INCLUDE_PATH'] . '/addons/tinymce/functions/function_rex_tinymce.inc.php';
-
-    // Kompatibilitäts-Funktionen
-    include_once $REX['INCLUDE_PATH'] . '/addons/tinymce/functions/function_rex_compat.inc.php';*/
+if($db){echo '<pre>'.var_export($_REQUEST,true).'</pre>';}
 
 echo '
 <div class="rex-addon-output">
