@@ -42,8 +42,6 @@ if (!function_exists('rexdev_incparse'))
       $html =  get_include_contents($source);
       break;
 
-
-
       case 'iframe':
       $html = '<iframe src="'.$source.'" width="99%" height="600px"></iframe>';
       break;
