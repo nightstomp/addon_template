@@ -24,14 +24,13 @@ require $REX['INCLUDE_PATH'] . '/layout/top.php';
 $subpages = array (
   array ('','Addon Einstellungen'),
   /*array ('settings_xform','XForm'),
-  array ('database','Addon DB Tabelle'),*/
+  array ('database','Addon Daten'),*/
   array ('help','Hilfe')
 );
 
 // TITLE & SUBPAGE NAVIGATION
 ////////////////////////////////////////////////////////////////////////////////
-$versionstring = implode('.', $REX['ADDON'][$myself]['VERSION']);
-rex_title($REX['ADDON']['name'][$myself].' <span class="addonversion">'.$versionstring.'</span>', $subpages);
+rex_title($REX['ADDON']['name'][$myself].' <span class="addonversion">'.$REX['ADDON']['version'][$myself].'</span>', $subpages);
 
 // DEFINE DEFAULT SUBPAGE, INCLUDE REQUESTED SUBPAGE
 ////////////////////////////////////////////////////////////////////////////////
