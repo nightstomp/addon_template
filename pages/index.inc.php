@@ -24,7 +24,7 @@ require $REX['INCLUDE_PATH'] . '/layout/top.php';
 $subpages = array (
   array ('','Einstellungen'),
   /*array ('settings_xform','XForm'),*/
-  array ('database','Datenverwaltung'),
+  array ('database','Datenbank'),
   array ('help','Hilfe')
 );
 
