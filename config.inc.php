@@ -44,17 +44,12 @@ $REX['PERM'][] = $myself.'[]';
 // --- DYN
 $REX["ADDON"]["addon_template"]["settings"]["textinput1"] = '$irgendwas..';
 $REX["ADDON"]["addon_template"]["settings"]["textarea1"] = 'fasel \"blub\" \'bäh\' isoleé';
-$REX["ADDON"]["addon_template"]["settings"]["demo_select"] = '1';
-$REX["ADDON"]["addon_template"]["settings"]["demo_multiselect"] = array (
-  0 => '2',
-  1 => 'fasel',
-);
+$REX["ADDON"]["addon_template"]["settings"]["select"] = '0';
 $REX["ADDON"]["addon_template"]["settings"]["MEDIA"] = array (
   1 => 'screenshot_content_edit.png',
 );
 $REX["ADDON"]["addon_template"]["settings"]["MEDIALIST"] = array (
-  1 => 'button.gif,redaxo_logo_klein.gif,linie_start_block.gif',
-  2 => 'thomas.gif,markus.gif,jan.gif',
+  1 => 'thomas.gif,markus.gif,jan.gif,team-bild.gif',
 );
 $REX["ADDON"]["addon_template"]["settings"]["LINK"] = array (
   1 => '25',

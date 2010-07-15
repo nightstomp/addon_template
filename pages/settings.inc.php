@@ -56,20 +56,31 @@ $tmp->setName('select');
 $tmp->addOption('inaktiv',0);                              // Beschreibung ['string'], Wert [int|'string']
 $tmp->addOption('foo..',1);
 $tmp->addOption('bar..',2);
-$tmp->setSelected($myREX['settings']['select']);      // gespeicherte Werte einsetzen
-$select = $tmp->get();                                // HTML in Variable speichern
+$tmp->setSelected($myREX['settings']['select']);           // gespeicherte Werte einsetzen
+$select = $tmp->get();                                     // HTML in Variable speichern
 
 // MULTISELECT BOX
 ////////////////////////////////////////////////////////////////////////////////
 $tmp = new rex_select();                                   // rex_select Objekt initialisieren
 $tmp->setSize(4);                                          // angezeigte Zeilen, Rest wird gescrollt
 $tmp->setMultiple(true);
-$tmp->setName('multiselect[]');                       // abschließendes [] wichtig!
+$tmp->setName('multiselect[]');                            // abschließendes [] wichtig!
 $tmp->addOption('Nein',1);                                 // Beschreibung ['string'], Wert [int|'string']
 $tmp->addOption('blah..',2);
 $tmp->addOption('fasel..','fasel');
-$tmp->setSelected($myREX['settings']['multiselect']); // gespeicherte Werte einsetzen
-$multiselect = $tmp->get();                           // HTML in Variable speichern
+$tmp->setSelected($myREX['settings']['multiselect']);      // gespeicherte Werte einsetzen
+$multiselect = $tmp->get();                                // HTML in Variable speichern
+
+// CHECKBOX
+////////////////////////////////////////////////////////////////////////////////
+/* $id = 1;                                                // eindeutige Button ID
+$mp = 7;                                                   // ID der auzurufenden Medienpool Kategorie
+$tmp = rex_input::x('checkbox');                           // Objekt initialisieren
+//$tmp->setButtonId($id);                                  // Button ID
+//$tmp->setCategoryId($mp);                                // Medienpool Kategorie ID
+$tmp->setValue($myREX['settings']['MEDIA'][$id]);          // gespeicherte Werte einsetzen
+$tmp->setAttribute('name', 'checkbox['.$id.']');
+$checkbox1 = $tmp->getHtml();*/
 
 // MEDIA BUTTON
 ////////////////////////////////////////////////////////////////////////////////
@@ -91,25 +102,27 @@ $tmp->setButtonId($id);                                    // Button ID
 $tmp->setCategoryId($mp);                                  // Medienpool Kategorie ID
 $tmp->setValue($myREX['settings']['MEDIALIST'][$id]);      // gespeicherte Werte einsetzen
 $tmp->setAttribute('name', 'MEDIALIST['.$id.']');
-$MediaList2 = $tmp->getHtml();
+$MediaList1 = $tmp->getHtml();
 
 // LINK BUTTON
 ////////////////////////////////////////////////////////////////////////////////
 $id = 1;                                                   // eindeutige Button ID
-$tmp = rex_input::factory('linkbutton');              // Objekt initialisieren
+$tmp = rex_input::factory('linkbutton');                   // Objekt initialisieren
 $tmp->setButtonId($id);                                    // Button ID
-$tmp->setValue($myREX['settings']['LINK'][$id]);      // gespeicherte Werte einsetzen
+$tmp->setValue($myREX['settings']['LINK'][$id]);           // gespeicherte Werte einsetzen
 $tmp->setAttribute('name', 'LINK['.$id.']');
 $Link1 = $tmp->getHtml();
 
-// LINK BUTTON
+// LINKLIST BUTTON
 ////////////////////////////////////////////////////////////////////////////////
 $id = 1;                                                   // eindeutige Button ID
-$tmp = rex_input::factory('linklistbutton');              // Objekt initialisieren
+$tmp = rex_input::factory('linklistbutton');               // Objekt initialisieren
 $tmp->setButtonId($id);                                    // Button ID
-$tmp->setValue($myREX['settings']['LINKLIST'][$id]);      // gespeicherte Werte einsetzen
+$tmp->setValue($myREX['settings']['LINKLIST'][$id]);       // gespeicherte Werte einsetzen
 $tmp->setAttribute('name', 'LINKLIST['.$id.']');
 $Linklist1 = $tmp->getHtml();
+
+
 
 echo '
 <div class="rex-addon-output">
@@ -142,7 +155,7 @@ echo '
         </fieldset>
 
         <fieldset class="rex-form-col-1">
-          <legend>Selectboxen</legend>
+          <legend>Auswahl von Werten</legend>
           <div class="rex-form-wrapper">
 
             <div class="rex-form-row">
@@ -151,6 +164,7 @@ echo '
                 '.$select.'
               </p>
             </div><!-- .rex-form-row -->
+
 
           <div class="rex-form-row">
             <p class="rex-form-col-a rex-form-select">

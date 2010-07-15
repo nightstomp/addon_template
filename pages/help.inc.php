@@ -20,12 +20,12 @@ $func    = rex_request('func',    'string');
 // SUBNAVIGATION ITEMS
 ////////////////////////////////////////////////////////////////////////////////
 $chapterpages = array (
-''                => array('Readme'                  ,'_readme.txt'                 ,'textile'),
-'changelog'       => array('Changelog'               ,'_changelog.txt'              ,'textile'),
-'text_demo'       => array('<i>TXT include</i>'      ,'pages/txt_include_examle.txt','txt'),
-'php_demo'        => array('<i>PHP include</i>'      ,'pages/php_include_examle.php','php'),
-'iframelink_demo' => array('<i>Link (iframe)</i>'    ,'http://redaxo.de'            ,'iframe'),
-'newwinlink_demo' => array('<i>Link (neues Fenster)' ,'http://redaxo.de'            ,'jsopenwin')
+''                => array('Readme'                  ,'_readme.textile'                 ,'textile'),
+'changelog'       => array('Changelog'               ,'_changelog.textile'              ,'textile'),
+'text_demo'       => array('<i>TXT include</i>'      ,'pages/txt_include_examle.txt'    ,'txt'),
+'php_demo'        => array('<i>PHP include</i>'      ,'pages/php_include_examle.php'    ,'php'),
+'iframelink_demo' => array('<i>Link (iframe)</i>'    ,'http://redaxo.de'                ,'iframe'),
+'newwinlink_demo' => array('<i>Link (neues Fenster)' ,'http://redaxo.de'                ,'jsopenwin')
 );
 
 // BUILD CHAPTER NAVIGATION

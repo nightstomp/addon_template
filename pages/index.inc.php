@@ -22,9 +22,9 @@ require $REX['INCLUDE_PATH'] . '/layout/top.php';
 // DEFINE SUBPAGES
 ////////////////////////////////////////////////////////////////////////////////
 $subpages = array (
-  array ('','Addon Einstellungen'),
-  /*array ('settings_xform','XForm'),
-  array ('database','Addon Daten'),*/
+  array ('','Einstellungen'),
+  /*array ('settings_xform','XForm'),*/
+  array ('database','Datenverwaltung'),
   array ('help','Hilfe')
 );
 
