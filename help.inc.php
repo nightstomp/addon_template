@@ -10,21 +10,23 @@
 * $Id$:
 */
 
-// ADDON IDENTIFIER & ROOT DIR
+// ADDON IDENTIFIER AUS ORDNERNAMEN ABLEITEN
 ////////////////////////////////////////////////////////////////////////////////
-$myself = rex_request('addonname','string');
+$myself = explode('/redaxo/include/addons/',__FILE__);
+$myself = explode('/',$myself[1]);
+$myself = $myself[0];
 $myroot = $REX['INCLUDE_PATH'].'/addons/'.$myself.'/';
 
 // LOCAL INCLUDES
 ////////////////////////////////////////////////////////////////////////////////
-require_once $myroot.'/functions/function.rexdev_incparse.inc.php';
+require_once $myroot.'functions/function.rexdev_incparse.inc.php';
 
 // HELP CONTENT
 ////////////////////////////////////////////////////////////////////////////////
 $help_includes = array
 (
-  'Hilfe'     => array('_readme.txt','textile'),
-  'Changelog' => array('_changelog.txt','textile')
+  'Hilfe'     => array('_readme.textile'    ,'textile'),
+  'Changelog' => array('_changelog.textile' ,'textile')
 );
 
 // MAIN

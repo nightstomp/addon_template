@@ -99,6 +99,16 @@ span.jsopenwin {
   line-height:12px;
   }
 
+.addon-template pre.plain {
+  overflow:auto;
+  border:0;
+  background:transparent;
+  margin:2px 4px 8px 0;
+  padding:8px;
+  line-height:12px;
+  color:black;
+  }
+
 .addon-template hr {
   height:1px;
   border:0;

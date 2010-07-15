@@ -1,4 +1,4 @@
-bc. Dies ist der Textile formatierte Inhalt der Datei "_changelog.txt"
+bc. Dies ist der Textile formatierte Inhalt der Datei "_changelog.textile"
 
 h1. Addon_Template Changelog
 

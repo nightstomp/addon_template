@@ -10,9 +10,11 @@
 * $Id$:
 */
 
-// ADDON IDENTIFIER
+// ADDON IDENTIFIER AUS ORDNERNAMEN ABLEITEN
 ////////////////////////////////////////////////////////////////////////////////
-$myself = "addon_template";
+$myself = explode('/redaxo/include/addons/',__FILE__);
+$myself = explode('/',$myself[1]);
+$myself = $myself[0];
 
 // INSTALL CONDITIONS
 ////////////////////////////////////////////////////////////////////////////////

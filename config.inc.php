@@ -15,7 +15,7 @@
 $myself = explode('/redaxo/include/addons/',__FILE__);
 $myself = explode('/',$myself[1]);
 $myself = $myself[0];
-$myroot = $REX['INCLUDE_PATH'].'/addons/'.$myself;
+$myroot = $REX['INCLUDE_PATH'].'/addons/'.$myself.'/';
 
 // ADDON VERSION
 ////////////////////////////////////////////////////////////////////////////////
@@ -70,13 +70,13 @@ $REX["ADDON"]["addon_template"]["settings"]["debug"] = true;
 if ($REX['REDAXO'])
 {
   // AUTO INCLUDE FUNCTIONS
-  foreach (glob($myroot.'/functions/function.*.inc.php') as $include)
+  foreach (glob($myroot.'functions/function.*.inc.php') as $include)
   {
     require_once $include;
   }
 
   // AUTO INCLUDE CLASSES
-  foreach (glob($myroot.'/classes/class.*.inc.php') as $include)
+  foreach (glob($myroot.'classes/class.*.inc.php') as $include)
   {
     require_once $include;
   }
