@@ -128,6 +128,7 @@ elseif ($func == 'edit' || $func == 'add')
 
   // Multi Selectbox
   $field =& $form->addSelectField('multiselect');
+  $field->setAttribute('multiple','multiple');
   $field->setLabel("MultiSelectbox");
   $select =& $field->getSelect();
   $select->addOption('Beschreibung zu Wert "blah"','blah');
