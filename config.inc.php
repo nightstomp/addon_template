@@ -23,7 +23,7 @@ $REX['ADDON'][$myself]['VERSION'] = array
 (
 'VERSION'      => 0,
 'MINORVERSION' => 1,
-'SUBVERSION'   => 0
+'SUBVERSION'   => ereg_replace('[^0-9]','',"$Revision$")
 );
 
 // ADDON REX COMMONS
@@ -31,8 +31,7 @@ $REX['ADDON'][$myself]['VERSION'] = array
 $REX['ADDON']['rxid'][$myself] = '720';
 $REX['ADDON']['page'][$myself] = $myself;
 $REX['ADDON']['name'][$myself] = 'Addon Template';
-$REX['ADDON'][$myself]['revision'] = ereg_replace('[^0-9]','',"$Revision$");
-$REX['ADDON']['version'][$myself] = implode('.', $REX['ADDON'][$myself]['VERSION']).' SVN #'.$REX['ADDON'][$myself]['revision'];
+$REX['ADDON']['version'][$myself] = implode('.', $REX['ADDON'][$myself]['VERSION']);
 $REX['ADDON']['author'][$myself] = 'rexdev.de';
 $REX['ADDON']['supportpage'][$myself] = 'forum.redaxo.de';
 $REX['ADDON']['perm'][$myself] = $myself.'[]';
