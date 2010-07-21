@@ -16,14 +16,23 @@ $myself = rex_request('addonname','string');
 
 // INSTALL CONDITIONS
 ////////////////////////////////////////////////////////////////////////////////
+$requiered_REX = '4.3.1';
 $requiered_PHP = 5;
 $requiered_addons = array('textile');
-
-// MAIN
-////////////////////////////////////////////////////////////////////////////////
 $do_install = true;
 
-/* PHP CHECK */
+// CHECK REDAXO VERSION
+////////////////////////////////////////////////////////////////////////////////
+$this_REX = $REX['VERSION'].'.'.$REX['SUBVERSION'].'.'.$REX['MINORVERSION'] = "1";
+if(version_compare($this_REX, $requiered_REX, '<'))
+{
+	$REX['ADDON']['installmsg'][$myself] = 'Dieses Addon ben&ouml;tigt Redaxo Version '.$requiered_REX.' oder h&ouml;her.';
+	$REX['ADDON']['install'][$myself] = 0;
+	$do_install = false;
+}
+
+// CHECK PHP VERSION
+////////////////////////////////////////////////////////////////////////////////
 if (intval(PHP_VERSION) < $requiered_PHP)
 {
 	$REX['ADDON']['installmsg'][$myself] = 'Dieses Addon ben&ouml;tigt mind. PHP '.$requiered_PHP.'!';
@@ -31,7 +40,8 @@ if (intval(PHP_VERSION) < $requiered_PHP)
 	$do_install = false;
 }
 
-/* ADDONS CHECK */
+// CHECK REQUIERED ADDONS
+////////////////////////////////////////////////////////////////////////////////
 foreach($requiered_addons as $a)
 {
   if (!OOAddon::isInstalled($a))
@@ -50,6 +60,8 @@ foreach($requiered_addons as $a)
   }
 }
 
+// DO INSTALL
+////////////////////////////////////////////////////////////////////////////////
 if ($do_install)
 {
 	$REX['ADDON']['install'][$myself] = 1;
