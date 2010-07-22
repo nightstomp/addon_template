@@ -23,7 +23,9 @@ $addonroot = $REX['INCLUDE_PATH']. '/addons/'.$myself.'/';
 switch($func)
 {
   case '':
-    rexdev_incparse($addonroot.'pages/','_connector_explanation.textile','textile');
+    $html = rexdev_incparse($addonroot.'pages/','_connector_explanation.textile','textile',true);
+    $html = str_replace('addon_template',$myself,$html);
+    echo $html;
     break;
 
   case 'css':
