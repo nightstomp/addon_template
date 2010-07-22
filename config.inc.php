@@ -13,7 +13,7 @@
 // ERROR_REPORTING
 ////////////////////////////////////////////////////////////////////////////////
 @ ini_set('error_reporting', E_ALL);
-@ ini_set('display_errors', Off);
+@ ini_set('display_errors', On);
 
 // ADDON IDENTIFIER AUS ORDNERNAMEN ABLEITEN
 ////////////////////////////////////////////////////////////////////////////////
@@ -36,7 +36,7 @@ $REX['ADDON'][$myself]['VERSION'] = array
 ////////////////////////////////////////////////////////////////////////////////
 $REX['ADDON']['rxid'][$myself] = '720';
 $REX['ADDON']['page'][$myself] = $myself;
-$REX['ADDON']['name'][$myself] = 'Addon Template';
+$REX['ADDON']['name'][$myself] = $myself;
 $REX['ADDON']['version'][$myself] = implode('.', $REX['ADDON'][$myself]['VERSION']);
 $REX['ADDON']['author'][$myself] = 'rexdev.de';
 $REX['ADDON']['supportpage'][$myself] = 'forum.redaxo.de';
@@ -47,16 +47,16 @@ $REX['PERM'][] = $myself.'[]';
 ////////////////////////////////////////////////////////////////////////////////
 /* dynamisch: Werte kommen aus dem "Einstellungen" Formular */
 // --- DYN
-$REX["ADDON"]["addon_template"]["settings"]["TEXTINPUT"] = array (
+$REX["ADDON"][$myself]["settings"]["TEXTINPUT"] = array (
   1 => '',
 );
-$REX["ADDON"]["addon_template"]["settings"]["TEXTAREA"] = array (
+$REX["ADDON"][$myself]["settings"]["TEXTAREA"] = array (
   1 => '',
 );
-$REX["ADDON"]["addon_template"]["settings"]["SELECT"] = array (
+$REX["ADDON"][$myself]["settings"]["SELECT"] = array (
   1 => '0',
 );
-$REX["ADDON"]["addon_template"]["settings"]["MULTISELECT"] = array (
+$REX["ADDON"][$myself]["settings"]["MULTISELECT"] = array (
   1 =>
   array (
     0 => '0',
@@ -64,19 +64,19 @@ $REX["ADDON"]["addon_template"]["settings"]["MULTISELECT"] = array (
     2 => 'blau',
   ),
 );
-$REX["ADDON"]["addon_template"]["settings"]["MEDIA"] = array (
+$REX["ADDON"][$myself]["settings"]["MEDIA"] = array (
   1 => '',
 );
-$REX["ADDON"]["addon_template"]["settings"]["MEDIALIST"] = array (
+$REX["ADDON"][$myself]["settings"]["MEDIALIST"] = array (
   1 => '',
 );
-$REX["ADDON"]["addon_template"]["settings"]["LINK"] = array (
+$REX["ADDON"][$myself]["settings"]["LINK"] = array (
   1 => '',
 );
-$REX["ADDON"]["addon_template"]["settings"]["LINK_NAME"] = array (
+$REX["ADDON"][$myself]["settings"]["LINK_NAME"] = array (
   1 => '',
 );
-$REX["ADDON"]["addon_template"]["settings"]["LINKLIST"] = array (
+$REX["ADDON"][$myself]["settings"]["LINKLIST"] = array (
   1 => '',
 );
 // --- /DYN
