@@ -12,7 +12,7 @@
 
 // ADDON IDENTIFIER AUS ORDNERNAMEN ABLEITEN
 ////////////////////////////////////////////////////////////////////////////////
-$myself = explode('/redaxo/include/addons/',__FILE__);
+$myself = explode('/redaxo/include/addons/',str_replace(DIRECTORY_SEPARATOR, '/' ,__FILE__));
 $myself = explode('/',$myself[1]);
 $myself = $myself[0];
 $myroot = $REX['INCLUDE_PATH'].'/addons/'.$myself.'/';
