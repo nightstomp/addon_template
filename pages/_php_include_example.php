@@ -1,6 +1,6 @@
 <?php
 
 echo '<pre>Ausgabe der PHP Datei:
-"'.__FILE__.'"</pre>';
+"'.str_replace(DIRECTORY_SEPARATOR, '/' ,__FILE__).'"</pre>';
 
 ?>
