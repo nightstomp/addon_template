@@ -13,7 +13,7 @@
 // ERROR_REPORTING
 ////////////////////////////////////////////////////////////////////////////////
 @ ini_set('error_reporting', E_ALL);
-@ ini_set('display_errors', On);
+@ ini_set('display_errors', Off);
 
 // ADDON IDENTIFIER AUS ORDNERNAMEN ABLEITEN
 ////////////////////////////////////////////////////////////////////////////////
@@ -43,7 +43,7 @@ $REX['ADDON']['supportpage'][$myself] = 'forum.redaxo.de';
 $REX['ADDON']['perm'][$myself] = $myself.'[]';
 $REX['PERM'][] = $myself.'[]';
 
-// ADDON SETTINGS
+// DYNAMISCHE SETTINGS
 ////////////////////////////////////////////////////////////////////////////////
 /* dynamisch: Werte kommen aus dem "Einstellungen" Formular */
 // --- DYN
@@ -80,6 +80,10 @@ $REX["ADDON"][$myself]["settings"]["LINKLIST"] = array (
   1 => '',
 );
 // --- /DYN
+
+// HIDDEN SETTINGS
+////////////////////////////////////////////////////////////////////////////////
+$REX['ADDON'][$myself]['settings']['rex_list_pagination'] = 20;
 
 // AUTO INCLUDE FUNCTIONS & CLASSES
 ////////////////////////////////////////////////////////////////////////////////

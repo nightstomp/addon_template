@@ -21,7 +21,7 @@ $id        = rex_request('id', 'int');
 
 // TABELLE IDENTIFIER
 /////////////////////////////////////////////////////////////////////////////////
-$AddonDBTable = 'rex_720_'.$myself;
+$AddonDBTable = $REX['TABLE_PREFIX'].'720_'.$myself;
 
 
 // TABELLE ANLEGEN
@@ -69,7 +69,7 @@ if($tbl->getErrno()==1146)
 
 // AUSGABE DER SEITE JE NACH $func
 /////////////////////////////////////////////////////////////////////////////////
-$pagination = 20;
+$pagination = $REX['ADDON'][$myself]['settings']['rex_list_pagination'];
 
 if($func == "")
 {
