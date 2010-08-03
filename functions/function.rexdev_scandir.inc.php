@@ -183,4 +183,3 @@ if (!function_exists('rexdev_scandir'))
     }
   }
 }
-?>

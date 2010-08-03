@@ -33,4 +33,3 @@ switch($func)
     break;
 
 }
-?>

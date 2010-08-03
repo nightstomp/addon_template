@@ -66,6 +66,3 @@ if ($do_install)
 {
 	$REX['ADDON']['install'][$myself] = 1;
 }
-
-
-?>

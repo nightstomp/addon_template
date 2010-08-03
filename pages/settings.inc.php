@@ -237,4 +237,3 @@ echo '
   </div><!-- .rex-form -->
 </div><!-- .rex-addon-output -->
 ';
-?>

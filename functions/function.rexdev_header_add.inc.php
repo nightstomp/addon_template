@@ -3,11 +3,11 @@
 * Generische Funktion zum Einbinden von CSS, JS, .. ins Redaxo Backend
 *
 * @param $params Extension-Point Parameter
-* 
+*
 * @author rexdev.de
 * @package redaxo4
 * @version 0.1
-* $Id$: 
+* $Id$:
 *
 * Beispiel:
 * ---------------------------------------------------------------
@@ -40,4 +40,3 @@ if(!function_exists('rexdev_header_add'))
     return $params['subject'];
   }
 }
-?>

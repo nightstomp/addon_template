@@ -46,6 +46,3 @@ foreach($help_includes as $k => $v)
     </div>';
   }
 }
-
-
-?>

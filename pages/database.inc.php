@@ -227,5 +227,3 @@ elseif ($func == 'edit' || $func == 'add')
   echo '</div>';
 
 }
-
-?>

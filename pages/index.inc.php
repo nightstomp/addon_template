@@ -80,5 +80,3 @@ else
 {
   require $REX['INCLUDE_PATH'] . '/addons/'.$myself.'/pages/'.$subpage.'.inc.php';
 }
-
-?>

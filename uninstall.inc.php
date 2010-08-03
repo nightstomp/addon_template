@@ -16,5 +16,3 @@ $myself = rex_request('addonname','string');
 
 
 $REX['ADDON']['install'][$myself] = 0;
-
-?>

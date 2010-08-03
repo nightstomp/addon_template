@@ -107,5 +107,3 @@ $header = '  <link rel="stylesheet" type="text/css" href="../files/addons/'.$mys
 if ($REX['REDAXO']) {
   rex_register_extension('PAGE_HEADER', 'rexdev_header_add',array($header));
 }
-
-?>
