@@ -22,20 +22,9 @@ if($faceless != 1)
   //////////////////////////////////////////////////////////////////////////////
   require $REX['INCLUDE_PATH'] . '/layout/top.php';
 
-  // DEFINE SUBPAGES
-  //////////////////////////////////////////////////////////////////////////////
-  $subpages = array (
-    //     subpage    ,label                         ,perm   ,params               ,attributes
-    array (''         ,'Einstellungen'               ,''     ,''                   ,''),
-    array ('database' ,'Datenbank'                   ,''     ,''                   ,''),
-    array ('modul'    ,'Modul'                       ,''     ,''                   ,''),
-    array ('help'     ,'Hilfe'                       ,''     ,''                   ,''),
-    array ('connector','Connector (faceless subpage)',''     ,array('faceless'=>1) ,array('class'=>'jsopenwin'))
-  );
-
   // TITLE & SUBPAGE NAVIGATION
   //////////////////////////////////////////////////////////////////////////////
-  rex_title($REX['ADDON']['name'][$myself].' <span class="addonversion">'.$REX['ADDON']['version'][$myself].'</span>', $subpages);
+  rex_title($REX['ADDON']['name'][$myself].' <span class="addonversion">'.$REX['ADDON']['version'][$myself].'</span>', $REX['ADDON'][$myself]['SUBPAGES']);
 
   // INCLUDE REQUESTED SUBPAGE
   //////////////////////////////////////////////////////////////////////////////

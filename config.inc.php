@@ -107,3 +107,14 @@ $header = '  <link rel="stylesheet" type="text/css" href="../files/addons/'.$mys
 if ($REX['REDAXO']) {
   rex_register_extension('PAGE_HEADER', 'rexdev_header_add',array($header));
 }
+
+// SUBPAGES
+//////////////////////////////////////////////////////////////////////////////
+$REX['ADDON'][$myself]['SUBPAGES'] = array (
+  //     subpage    ,label                         ,perm   ,params               ,attributes
+  array (''         ,'Einstellungen'               ,''     ,''                   ,''),
+  array ('database' ,'Datenbank'                   ,''     ,''                   ,''),
+  array ('modul'    ,'Modul'                       ,''     ,''                   ,''),
+  array ('help'     ,'Hilfe'                       ,''     ,''                   ,''),
+  array ('connector','Connector (faceless subpage)',''     ,array('faceless'=>1) ,array('class'=>'jsopenwin'))
+);
