@@ -8,7 +8,9 @@
 * $Id$:
 */
 
-/* OVERRIDES FÜR css_form.css */
+/* OVERRIDES FÜR css_form.css
+
+NEU CHECKEN, BZW. ADDON SPEZIFISCH MACHEN..
 
 div.rex-form div.rex-form-row p.rex-form-radio label {
     display:inline-block;
@@ -34,7 +36,7 @@ div.rex-form-row p.rex-form-label-right input.rex-form-checkbox {
 
 div.rex-form-row p.rex-form-label-right label {
     margin: 3px 0 0 0;
-  }
+  }*/
 
 /* ADDON HEADLINE */
 span.addonversion {
