@@ -23,13 +23,13 @@ $addonroot = $REX['INCLUDE_PATH']. '/addons/'.$mypage.'/';
 switch($func)
 {
   case '':
-    $html = rexdev_incparse($addonroot.'pages/','_connector_explanation.textile','textile',true);
+    $html = a720_incparse($addonroot.'pages/','_connector_explanation.textile','textile',true);
     $html = str_replace('addon_template',$mypage,$html);
     echo $html;
     break;
 
   case 'css':
-    rexdev_incparse($addonroot.'files/','backend.css','raw');
+    a720_incparse($addonroot.'files/','backend.css','raw');
     break;
 
 }

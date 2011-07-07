@@ -47,7 +47,7 @@ $addonroot = $REX['INCLUDE_PATH']. '/addons/'.$mypage.'/';
 $source    = $chapterpages[$chapter][1];
 $parse     = $chapterpages[$chapter][2];
 
-$html = rexdev_incparse($addonroot,$source,$parse,true);
+$html = a720_incparse($addonroot,$source,$parse,true);
 
 
 // OUTPUT

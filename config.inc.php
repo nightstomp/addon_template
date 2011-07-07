@@ -113,7 +113,7 @@ if ($REX['REDAXO'])
 $header = '  <link rel="stylesheet" type="text/css" href="../files/addons/'.$mypage.'/backend.css" media="screen, projection, print" />';
 
 if ($REX['REDAXO']) {
-  rex_register_extension('PAGE_HEADER', 'rexdev_header_add',array($header));
+  rex_register_extension('PAGE_HEADER', 'a720_backend_header',array($header));
 }
 
 // SUBPAGES

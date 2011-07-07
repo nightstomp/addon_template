@@ -1,6 +1,6 @@
 <?php
 /**
-* Addon_Template
+* Addon_Template COMMON FUNCTIONS
 *
 * @author http://rexdev.de
 * @link   http://www.redaxo.de/180-0-addon-details.html?addon_id=720
@@ -12,9 +12,9 @@
 
 // INCLUDE PARSER FUNCTION
 ////////////////////////////////////////////////////////////////////////////////
-if (!function_exists('rexdev_incparse'))
+if (!function_exists('a720_incparse'))
 {
-  function rexdev_incparse($root,$source,$parsemode,$return=false)
+  function a720_incparse($root,$source,$parsemode,$return=false)
   {
 
     switch ($parsemode)
@@ -22,7 +22,7 @@ if (!function_exists('rexdev_incparse'))
       case 'textile':
       $source = $root.$source;
       $content = file_get_contents($source);
-      $html = rexdev_textileparser($content,true);
+      $html = a720_textileparser($content,true);
       break;
 
       case 'txt':
@@ -45,7 +45,7 @@ if (!function_exists('rexdev_incparse'))
 
       case 'php':
       $source = $root.$source;
-      $html =  get_include_contents($source);
+      $html =  a720_include_contents($source);
       break;
 
       case 'iframe':
@@ -80,9 +80,9 @@ if (!function_exists('rexdev_incparse'))
 
 // TEXTILE PARSER FUNCTION
 ////////////////////////////////////////////////////////////////////////////////
-if (!function_exists('rexdev_textileparser'))
+if (!function_exists('a720_textileparser'))
 {
-  function rexdev_textileparser($textile,$return=false)
+  function a720_textileparser($textile,$return=false)
   {
     if(OOAddon::isAvailable("textile"))
     {
@@ -132,9 +132,9 @@ if (!function_exists('rexdev_textileparser'))
 
 // ECHO TEXTILE FORMATED STRING
 ////////////////////////////////////////////////////////////////////////////////
-if (!function_exists('echotextile'))
+if (!function_exists('a720_echotextile'))
 {
-  function echotextile($msg) {
+  function a720_echotextile($msg) {
     global $REX;
     if(OOAddon::isAvailable("textile")) {
       if($msg!='') {
@@ -157,9 +157,9 @@ if (!function_exists('echotextile'))
 
 // http://php.net/manual/de/function.include.php
 ////////////////////////////////////////////////////////////////////////////////
-if (!function_exists('get_include_contents'))
+if (!function_exists('a720_include_contents'))
 {
-  function get_include_contents($filename) {
+  function a720_include_contents($filename) {
     if (is_file($filename)) {
       ob_start();
       include $filename;
@@ -191,14 +191,14 @@ if (!function_exists('get_include_contents'))
   *
   * // include per 3. parameter an ep übergeben
   * if ($REX['REDAXO']) {
-  *   include_once $myroot.'/functions/function.rexdev_header_add.inc.php';
-  *   rex_register_extension('PAGE_HEADER', 'rexdev_header_add', $inc);
+  *   include_once $myroot.'/functions/function.a720_backend_header.inc.php';
+  *   rex_register_extension('PAGE_HEADER', 'a720_backend_header', $inc);
   * }
   * ------------------------------------------------------------------------------
   */
-if(!function_exists('rexdev_header_add'))
+if(!function_exists('a720_backend_header'))
 {
-  function rexdev_header_add($params) {
+  function a720_backend_header($params) {
 
     if (is_array($params) && count($params)>2) {
       foreach($params as $key => $val) {
@@ -214,46 +214,46 @@ if(!function_exists('rexdev_header_add'))
 
 
 /**
-* rexdev_scandir Funktion - Recursiver Scan eines Verzeichnisses
-*
-* @author <a href="http://rexdev.de">rexdev.de</a>
-*
-* @package redaxo4
-* @version 1.0
-* $Id$:
-*
-* @param $source    (string)    Pfad des zu scanenden Verzeichnisses
-* @param $limit     (int)       Scantiefe limitiert (1.-n.) Level bzw. nicht (0)
-* @param $blacklist (array)     Auszuschließende Ordner oder Dateien per:
-*                               - volle Ordner/Dateinamen
-*                               - wildcard: 'prefix*' od. '*suffix';
-* @param $whitelist (array)     Ergebnis (nur Dateien) eingrenzen auf:
-*                               - wildcard: 'prefix*' od. '*suffix';
-*
-* @return      (array/null)     Array
-*                               (
-*                                   [basedir]         => (absolute PATH)/
-*                                   [depth]           => (1-n)
-*                                   [counter]         => Array
-*                                       (
-*                                           [folders] => (relative PATH)/
-*                                           [files]   => (relative PATH)
-*                                       )
-*                                   [folders]         => Array
-*                                       (
-*                                           [1]       => (relative PATH)
-*                                           [2]       => ...
-*                                       )
-*                                   [files]           => Array
-*                                       (
-*                                           [1]       => (relative PATH)
-*                                           [2]       => ...
-*                                       )
-*                               )
-*/
-if (!function_exists('rexdev_scandir'))
+  * a720_scandir Funktion - Recursiver Scan eines Verzeichnisses
+  *
+  * @author <a href="http://rexdev.de">rexdev.de</a>
+  *
+  * @package redaxo4
+  * @version 1.0
+  * $Id$:
+  *
+  * @param $source    (string)    Pfad des zu scanenden Verzeichnisses
+  * @param $limit     (int)       Scantiefe limitiert (1.-n.) Level bzw. nicht (0)
+  * @param $blacklist (array)     Auszuschließende Ordner oder Dateien per:
+  *                               - volle Ordner/Dateinamen
+  *                               - wildcard: 'prefix*' od. '*suffix';
+  * @param $whitelist (array)     Ergebnis (nur Dateien) eingrenzen auf:
+  *                               - wildcard: 'prefix*' od. '*suffix';
+  *
+  * @return      (array/null)     Array
+  *                               (
+  *                                   [basedir]         => (absolute PATH)/
+  *                                   [depth]           => (1-n)
+  *                                   [counter]         => Array
+  *                                       (
+  *                                           [folders] => (relative PATH)/
+  *                                           [files]   => (relative PATH)
+  *                                       )
+  *                                   [folders]         => Array
+  *                                       (
+  *                                           [1]       => (relative PATH)
+  *                                           [2]       => ...
+  *                                       )
+  *                                   [files]           => Array
+  *                                       (
+  *                                           [1]       => (relative PATH)
+  *                                           [2]       => ...
+  *                                       )
+  *                               )
+  */
+if (!function_exists('a720_scandir'))
 {
-  function rexdev_scandir($source, $limit=0, $blacklist=array(), $whitelist=array(), &$result=array())
+  function a720_scandir($source, $limit=0, $blacklist=array(), $whitelist=array(), &$result=array())
   {
     // SANITIZE SOURCE PATH, CHECK IF IS DIR
     $source= '/'.trim($source,'/ ').'/';
@@ -278,40 +278,34 @@ if (!function_exists('rexdev_scandir'))
     $ignore = array_merge((array)$ignore,(array)$blacklist); // merge bulitin irgnores with user blacklist
     $rawscan = scandir($source);
     $dirscan = array_diff($rawscan, $ignore); // subtract ignores from full listing
-    //$fb->group('WILDCARD RESCAN');
     // RESCAN RESULT WITH WILDCARDS
     foreach($ignore as $i) // run through ignores (blacklist)
     {
       $i = explode('*',$i); // explode values strings to array by wildcard character
       if(count($i) == 2) // is valid wildcard string
-      {//$fb->log($i,'$i');
+      {
         if(array_search('', $i) == 0) // wildcard string is extension
         {
-          //$fb->group('EXTENSION matching');
           foreach($dirscan as $item) // run through prior scan result
-          {//$fb->log($dirscan,'$dirscan');
+          {
             if(substr($item, '-'.strlen($i[1])) == $i[1]) // wipe extension matches from $dirscan array
-            {//$fb->log($dirscan,'$dirscan');
-              $dirscan = array_diff($dirscan, array($item));//$fb->log($dirscan,'$dirscan');
+            {
+              $dirscan = array_diff($dirscan, array($item));
             }
           }
-          //$fb->groupEnd();
         }
         else // wildcard string is prefix
         {
-          //$fb->group('PREFIX matching');
           foreach($dirscan as $item) // run through prior scan result
           {
             if(substr($item, 0, strlen($i[0])) == $i[0]) // wipe prefix matches from $dirscan array
-            {//$fb->group($item);$fb->log($dirscan,'IN ('.count($dirscan).')');$fb->log($item,'$item');$fb->log(substr($item, 0, strlen($i[0])),'substr($item, 0, strlen($i[0]))');$fb->log($i[0],'$i[0]');
-              $dirscan = array_diff($dirscan, array($item));//$fb->log($dirscan,'OUT ('.count($dirscan).')');
+            {
+              $dirscan = array_diff($dirscan, array($item));
             }
           }
-          //$fb->groupEnd();
         }
       }
     }
-    //$fb->groupEnd();
 
     // WALK THROUGH RESULT RECURSIVELY
     foreach($dirscan as $item)
@@ -323,7 +317,7 @@ if (!function_exists('rexdev_scandir'))
         $result['folders'][$i] = str_replace($result['root'], '', $source.$item).'/';
         $result['counter']['folders']++;
 
-        $depth = count(explode('/',str_replace($result['root'], '', $source.$item.'/'))); //fb($depth,'$depth');
+        $depth = count(explode('/',str_replace($result['root'], '', $source.$item.'/')));
         if($depth>$result['depth'])
         {
           $result['depth'] = $depth;
@@ -331,15 +325,15 @@ if (!function_exists('rexdev_scandir'))
 
         // RECURSION IF NOT LIMITED
         if($limit && intval($limit))
-        { //fb('LIMITED recursion');
+        {
           if($limit > $depth)
           {
-            rexdev_scandir($source.$item.'/', $limit, $blacklist, $whitelist, $result);
+            a720_scandir($source.$item.'/', $limit, $blacklist, $whitelist, $result);
           }
         }
         else
-        { //fb('UN-LIMITED recursion');
-          rexdev_scandir($source.$item.'/', $limit, $blacklist, $whitelist, $result);
+        {
+          a720_scandir($source.$item.'/', $limit, $blacklist, $whitelist, $result);
         }
       }
 
@@ -349,14 +343,14 @@ if (!function_exists('rexdev_scandir'))
         $depth = count(explode('/',$source));
 
         if(count($whitelist)>0) // LIMIT ACCORDING WHITELIST
-        {//fb('LIMIT ACCORDING WHITELIST --------------------------------------');
+        {
           foreach($whitelist as $w)
           {
             $w = explode('*',$w); // string auf wildcard prüfen per zerlegen
             if(count($w) == 2) // korrekter wildcard string  -> weiter
             {
               if(array_search('', $w) == 0) // extension
-              { //fb($w[1],'MATCH EXTENSION'); fb($item,'$item'); fb(substr($item, '-'.strlen($w[1])),'substr'); fb($w[1],'$w[1]');
+              {
                 if(substr($item, '-'.strlen($w[1])) == $w[1])
                 {
                   $i = count($result['files']) + 1;
@@ -365,7 +359,7 @@ if (!function_exists('rexdev_scandir'))
                 }
               }
               else /* prefix */
-              {//fb($w[0],'MATCH PREFIX'); fb($item,'$item'); fb(substr($item, strlen($w[0])),'substr'); fb($w[0],'$w[0]');
+              {
                 if(substr($item, 0, strlen($w[0])) == $w[0])
                 {
                   $i = count($result['files']) + 1;
@@ -377,7 +371,7 @@ if (!function_exists('rexdev_scandir'))
           }
         }
         else // NO WHITELIST -> GET ALL
-        {//fb('NO WHITELIST -> GET ALL ----------------------------------------');
+        {
           $i = count($result['files']) + 1;
           $result['files'][$i] = str_replace($result['root'], '', $source.$item);
           $result['counter']['files']++;
