@@ -15,6 +15,7 @@
 /*ini_set('error_reporting', 'E_ALL');
 ini_set('display_errors', 'On');*/
 
+
 // ADDON IDENTIFIER AUS ORDNERNAMEN ABLEITEN
 ////////////////////////////////////////////////////////////////////////////////
 $mypage = explode('/redaxo/include/addons/',str_replace(DIRECTORY_SEPARATOR, '/' ,__FILE__));
@@ -22,8 +23,12 @@ $mypage = explode('/',$mypage[1]);
 $mypage = $mypage[0];
 $myroot = $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/';
 
-// ADDON VERSION
+
+// ADDON REX COMMONS
 ////////////////////////////////////////////////////////////////////////////////
+$REX['ADDON']['rxid'][$mypage] = '720';
+$REX['ADDON']['page'][$mypage] = $mypage;
+$REX['ADDON']['name'][$mypage] = $mypage;
 $Revision = '';
 $REX['ADDON'][$mypage]['VERSION'] = array
 (
@@ -31,17 +36,23 @@ $REX['ADDON'][$mypage]['VERSION'] = array
 'MINORVERSION' => 1,
 'SUBVERSION'   => preg_replace('/[^0-9]/','',"$Revision$")
 );
-
-// ADDON REX COMMONS
-////////////////////////////////////////////////////////////////////////////////
-$REX['ADDON']['rxid'][$mypage] = '720';
-$REX['ADDON']['page'][$mypage] = $mypage;
-$REX['ADDON']['name'][$mypage] = $mypage;
-$REX['ADDON']['version'][$mypage] = implode('.', $REX['ADDON'][$mypage]['VERSION']);
-$REX['ADDON']['author'][$mypage] = 'rexdev.de';
+$REX['ADDON']['version'][$mypage]     = implode('.', $REX['ADDON'][$mypage]['VERSION']);
+$REX['ADDON']['author'][$mypage]      = 'rexdev.de';
 $REX['ADDON']['supportpage'][$mypage] = 'forum.redaxo.de';
-$REX['ADDON']['perm'][$mypage] = $mypage.'[]';
-$REX['PERM'][] = $mypage.'[]';
+$REX['ADDON']['perm'][$mypage]        = $mypage.'[]';
+$REX['PERM'][]                        = $mypage.'[]';
+
+
+// STATIC ADDON SETTINGS
+////////////////////////////////////////////////////////////////////////////////
+$REX['ADDON'][$mypage]['settings']['rex_list_pagination'] = 20;
+/*$REX['ADDON'][$mypage]['params_cast'] = array (
+  'page'        => 'unset',
+  'subpage'     => 'unset',
+  'func'        => 'unset',
+  'submit'      => 'unset',
+  'sendit'      => 'unset',
+  );*/
 
 // DYNAMISCHE SETTINGS
 ////////////////////////////////////////////////////////////////////////////////
@@ -81,9 +92,6 @@ $REX["ADDON"][$mypage]["settings"]["LINKLIST"] = array (
 );
 // --- /DYN
 
-// HIDDEN SETTINGS
-////////////////////////////////////////////////////////////////////////////////
-$REX['ADDON'][$mypage]['settings']['rex_list_pagination'] = 20;
 
 // AUTO INCLUDE FUNCTIONS & CLASSES
 ////////////////////////////////////////////////////////////////////////////////
