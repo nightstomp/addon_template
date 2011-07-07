@@ -30,7 +30,6 @@ if (!function_exists('a720_incparse'))
       $content = file_get_contents($source);
 
       // links erzeugen
-      //$content = ereg_replace('http://www.', 'www.', $content);
       $content = preg_replace('/www\./', 'http://www.', $content);
       $content = preg_replace("#(^|[^\"=]{1})(http://|ftp://|mailto:|https://)([^\s<>]+)([\s\n<>]|$)#sm","\\1<a class=\"jsopenwin\" href=\"\\2\\3\">\\3</a>\\4",$content);
 
@@ -391,3 +390,79 @@ if (!function_exists('a720_scandir'))
   }
 }
 
+
+// SAVE ADDON SETTINGS
+////////////////////////////////////////////////////////////////////////////////
+if (!function_exists('a720_saveConf'))
+{
+  function a720_saveConf($myCONF)
+  {
+    global $REX,$mypage;
+  
+    // SAVE SETTINGS
+    $DYN    = '$REX["ADDON"]["'.$mypage.'"]["settings"] = '.stripslashes(var_export($myCONF,true)).';';
+    $config = $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/config.inc.php';
+    if(rex_replace_dynamic_contents($config, $DYN))
+    {
+      // UPDATE REX
+      $REX['ADDON'][$mypage]['settings'] = $myCONF;
+  
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+}
+
+
+// PARAMS CAST FUNCTIONS
+////////////////////////////////////////////////////////////////////////////////
+if (!function_exists('a720_nl_2_array'))
+{
+  function a720_nl_2_array($str)
+  {
+    $arr = array_filter(preg_split("/\n|\r\n|\r/", $str));
+    return is_array($arr) ? $arr : array($arr);
+  }
+}
+
+if (!function_exists('a720_array_2_nl'))
+{
+  function a720_array_2_nl($arr)
+  {
+    return count($arr)>0 ? implode(PHP_EOL,$arr) : '';
+  }
+}
+
+if (!function_exists('a720_cast'))
+{
+  function a720_cast($request,$conf)
+  {
+    if(is_array($request) && is_array($conf))
+    {
+      foreach($conf as $key => $cast)
+      {
+        switch($cast)
+        {
+          case 'unset':
+            unset($request[$key]);
+            break;
+  
+          case 'nl_2_array':
+            $request[$key] = a720_nl_2_array($request[$key]);
+            break;
+  
+          default:
+            $request[$key] = rex_request($key,$cast);
+        }
+      }
+      return $request;
+    }
+    else
+    {
+      trigger_error('wrong input type, array expected', E_USER_ERROR);
+    }
+  }
+}
