@@ -45,50 +45,60 @@ $REX['PERM'][]                        = $mypage.'[]';
 
 // STATIC ADDON SETTINGS
 ////////////////////////////////////////////////////////////////////////////////
-$REX['ADDON'][$mypage]['settings']['rex_list_pagination'] = 20;
-/*$REX['ADDON'][$mypage]['params_cast'] = array (
+$REX['ADDON'][$mypage]['rex_list_pagination'] = 20;
+$REX['ADDON'][$mypage]['params_cast'] = array (
   'page'        => 'unset',
   'subpage'     => 'unset',
+  'minorpage'   => 'unset',
   'func'        => 'unset',
   'submit'      => 'unset',
   'sendit'      => 'unset',
-  );*/
+  'PHPSESSID'   => 'unset',
+  );
 
 // DYNAMISCHE SETTINGS
 ////////////////////////////////////////////////////////////////////////////////
-/* dynamisch: Werte kommen aus dem "Einstellungen" Formular */
 // --- DYN
-$REX["ADDON"][$mypage]["settings"]["TEXTINPUT"] = array (
-  1 => '',
-);
-$REX["ADDON"][$mypage]["settings"]["TEXTAREA"] = array (
-  1 => '',
-);
-$REX["ADDON"][$mypage]["settings"]["SELECT"] = array (
-  1 => '0',
-);
-$REX["ADDON"][$mypage]["settings"]["MULTISELECT"] = array (
-  1 =>
+$REX["ADDON"]["addon_template"]["settings"] = array (
+  'TEXTINPUT' => 
   array (
-    0 => '0',
-    1 => '1',
-    2 => 'blau',
+    1 => 'Textfeld 1',
   ),
-);
-$REX["ADDON"][$mypage]["settings"]["MEDIA"] = array (
-  1 => '',
-);
-$REX["ADDON"][$mypage]["settings"]["MEDIALIST"] = array (
-  1 => '',
-);
-$REX["ADDON"][$mypage]["settings"]["LINK"] = array (
-  1 => '',
-);
-$REX["ADDON"][$mypage]["settings"]["LINK_NAME"] = array (
-  1 => '',
-);
-$REX["ADDON"][$mypage]["settings"]["LINKLIST"] = array (
-  1 => '',
+  'TEXTAREA' => 
+  array (
+    1 => 'Textarea 1',
+  ),
+  'SELECT' => 
+  array (
+    1 => '1',
+  ),
+  'MULTISELECT' => 
+  array (
+    1 => 
+    array (
+      0 => '1',
+    ),
+  ),
+  'MEDIA' => 
+  array (
+    1 => '',
+  ),
+  'MEDIALIST' => 
+  array (
+    1 => '',
+  ),
+  'LINK' => 
+  array (
+    1 => '',
+  ),
+  'LINK_NAME' => 
+  array (
+    1 => '',
+  ),
+  'LINKLIST' => 
+  array (
+    1 => '',
+  ),
 );
 // --- /DYN
 

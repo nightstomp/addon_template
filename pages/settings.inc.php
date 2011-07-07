@@ -17,42 +17,28 @@ $subpage   = rex_request('subpage', 'string');
 $minorpage = rex_request('minorpage', 'string');
 $func      = rex_request('func'   , 'string');
 
-// ADDON RELEVANTES AUS $REX HOLEN
-////////////////////////////////////////////////////////////////////////////////
-$myREX = $REX['ADDON'][$mypage];
-
 // FORMULAR PARAMETER SPEICHERN
 ////////////////////////////////////////////////////////////////////////////////
-if ($func == 'savesettings')
+if($func=='savesettings')
 {
-  $content = '';
-  foreach($_GET as $key => $val)
-  {
-    if(!in_array($key,array('page','subpage','minorpage','func','submit','PHPSESSID')))
-    {
-      $myREX['settings'][$key] = $val;
-      if(is_array($val))
-      {
-        $content .= '$REX["ADDON"]["'.$mypage.'"]["settings"]["'.$key.'"] = '.var_export($val,true).';'."\n";
-      }
-      else
-      {
-        if(is_numeric($val))
-        {
-          $content .= '$REX["ADDON"]["'.$mypage.'"]["settings"]["'.$key.'"] = '.$val.';'."\n";
-        }
-        else
-        {
-          $content .= '$REX["ADDON"]["'.$mypage.'"]["settings"]["'.$key.'"] = \''.$val.'\';'."\n";
-        }
-      }
-    }
-  }
+  // MERGE REQUEST & ADDON SETTINGS
+  $params_cast = $REX['ADDON'][$mypage]['params_cast'];
+  $myCONF = array_merge($REX['ADDON'][$mypage]['settings'],a720_cast($_POST,$params_cast));
 
-  $file = $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/config.inc.php';
-  rex_replace_dynamic_contents($file, $content);
-  echo rex_info('Einstellungen wurden gespeichert.');
+  // SAVE SETTINGS
+  if(a720_saveConf($myCONF))
+  {
+    echo rex_info('Einstellungen wurden gespeichert.');
+  }
+  else
+  {
+    echo rex_warning('Beim speichern der Einstellungen ist ein Problem aufgetreten.');
+  }
 }
+
+// ADDON SETTINGS AUS $REX IN EIGENE VAR REDUZIEREN
+////////////////////////////////////////////////////////////////////////////////
+$myREX = $REX['ADDON'][$mypage];
 
 // SELECT BOX
 ////////////////////////////////////////////////////////////////////////////////
@@ -136,7 +122,7 @@ echo '
 <div class="rex-addon-output">
   <div class="rex-form">
 
-  <form action="index.php" method="get" id="settings">
+  <form action="index.php" method="POST" id="settings">
     <input type="hidden" name="page" value="'.$mypage.'" />
     <input type="hidden" name="subpage" value="'.$subpage.'" />
     <input type="hidden" name="func" value="savesettings" />
