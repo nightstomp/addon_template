@@ -27,9 +27,20 @@ $AddonDBTable = $REX['TABLE_PREFIX'].'720_'.$mypage;
 // TABELLE ANLEGEN
 /////////////////////////////////////////////////////////////////////////////////
 $query = 'SELECT * FROM '.$AddonDBTable;
+$db_available = false;
 $tbl = new rex_sql();
 $tbl->setQuery($query);
-if($tbl->getErrno()==1146)
+
+if($tbl->getErrno()==1146 && $func!='setupdb')
+{
+  echo rex_info('Datenbank Tabelle <em>'.$AddonDBTable.'</em> ist nicht angelegt. <a href="http://rex43.loc/redaxo/index.php?page=addon_template&subpage=database&func=setupdb">Tabelle anlegen.</a>');
+}
+else
+{
+  $db_available = true;
+}
+
+if($tbl->getErrno()==1146 && $func=='setupdb')
 {
   $query = 'CREATE TABLE `'.$AddonDBTable.'` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -64,14 +75,17 @@ if($tbl->getErrno()==1146)
   $tbl->setQuery($query);
 
   echo rex_info('Datenbank Tabelle <em>'.$AddonDBTable.'</em> wurde angelegt');
+
+  $db_available = true;
+  $func = '';
 }
 
 
 // AUSGABE DER SEITE JE NACH $func
 /////////////////////////////////////////////////////////////////////////////////
-$pagination = $REX['ADDON'][$mypage]['settings']['rex_list_pagination'];
+$pagination = $REX['ADDON'][$mypage]['rex_list_pagination'];
 
-if($func == "")
+if($func == "" && $db_available)
 {
   /* LISTE ------------------------------------------------------------------ */
    echo '<div class="rex-addon-output">
@@ -131,7 +145,7 @@ if($func == "")
   echo '</div>';
 }
 
-elseif ($func == 'edit' || $func == 'add')
+elseif (($func == 'edit' || $func == 'add') && $db_available)
 {
   /* ADD/EDIT FORMULAR ------------------------------------------------------ */
 
