@@ -12,7 +12,7 @@
 
 // ADDON PARAMETER AUS URL HOLEN
 ////////////////////////////////////////////////////////////////////////////////
-$myself    = rex_request('page'   , 'string');
+$mypage    = rex_request('page'   , 'string');
 $subpage   = rex_request('subpage', 'string');
 $minorpage = rex_request('minorpage', 'string');
 $func      = rex_request('func'   , 'string');
@@ -21,7 +21,7 @@ $id        = rex_request('id', 'int');
 
 // TABELLE IDENTIFIER
 /////////////////////////////////////////////////////////////////////////////////
-$AddonDBTable = $REX['TABLE_PREFIX'].'720_'.$myself;
+$AddonDBTable = $REX['TABLE_PREFIX'].'720_'.$mypage;
 
 
 // TABELLE ANLEGEN
@@ -69,7 +69,7 @@ if($tbl->getErrno()==1146)
 
 // AUSGABE DER SEITE JE NACH $func
 /////////////////////////////////////////////////////////////////////////////////
-$pagination = $REX['ADDON'][$myself]['settings']['rex_list_pagination'];
+$pagination = $REX['ADDON'][$mypage]['settings']['rex_list_pagination'];
 
 if($func == "")
 {

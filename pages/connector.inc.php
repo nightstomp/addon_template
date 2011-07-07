@@ -12,19 +12,19 @@
 
 // GET PARAMS
 ////////////////////////////////////////////////////////////////////////////////
-$myself  = rex_request('page',    'string');
+$mypage  = rex_request('page',    'string');
 $subpage = rex_request('subpage', 'string');
 $func    = rex_request('func', 'string');
 
 // MAIN
 ////////////////////////////////////////////////////////////////////////////////
-$addonroot = $REX['INCLUDE_PATH']. '/addons/'.$myself.'/';
+$addonroot = $REX['INCLUDE_PATH']. '/addons/'.$mypage.'/';
 
 switch($func)
 {
   case '':
     $html = rexdev_incparse($addonroot.'pages/','_connector_explanation.textile','textile',true);
-    $html = str_replace('addon_template',$myself,$html);
+    $html = str_replace('addon_template',$mypage,$html);
     echo $html;
     break;
 

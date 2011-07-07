@@ -12,7 +12,7 @@
 
 // GET PARAMS
 ////////////////////////////////////////////////////////////////////////////////
-$myself             = rex_request('page', 'string');
+$mypage             = rex_request('page', 'string');
 $subpage            = rex_request('subpage', 'string');
 $func               = rex_request('func', 'string');
 $modul_id           = rex_request('demo_module_id', 'int');
@@ -37,11 +37,11 @@ foreach($gm->getArray() as $module)
 
 if ($func == 'install_modul')
 {
-  $default_module_name = $myself.' Demo Modul';
+  $default_module_name = $mypage.' Demo Modul';
 
   // Daten einlesen
-  $in  = rex_get_file_contents($REX['INCLUDE_PATH'].'/addons/'.$myself.'/modules/'.$modul_in);
-  $out = rex_get_file_contents($REX['INCLUDE_PATH'].'/addons/'.$myself.'/modules/'.$modul_out);
+  $in  = rex_get_file_contents($REX['INCLUDE_PATH'].'/addons/'.$mypage.'/modules/'.$modul_in);
+  $out = rex_get_file_contents($REX['INCLUDE_PATH'].'/addons/'.$mypage.'/modules/'.$modul_out);
 
   $mi = new rex_sql;
   // $mi->debugsql = 1;
@@ -73,7 +73,7 @@ if($modul_id > 0)
 {
   $standard_msg = array(
   'Weiteres ',
-  ' oder vorhandenes Modul wiederherstellen: <a href="index.php?page='.$myself.'&amp;subpage=modul&amp;func=install_modul&amp;demo_module_id='.$modul_id.'">['.$modul_id.'] '.htmlspecialchars($modul_name).'</a>'
+  ' oder vorhandenes Modul wiederherstellen: <a href="index.php?page='.$mypage.'&amp;subpage=modul&amp;func=install_modul&amp;demo_module_id='.$modul_id.'">['.$modul_id.'] '.htmlspecialchars($modul_name).'</a>'
   );
 }
 
@@ -84,14 +84,14 @@ echo '
   <div class="rex-addon-content">
     <div class="addon_template">
       <ul>
-        <li>'.$standard_msg[0].'<a href="index.php?page='.$myself.'&amp;subpage=modul&amp;func=install_modul">Beispielmodul installieren</a>'.$standard_msg[1].'</li>
+        <li>'.$standard_msg[0].'<a href="index.php?page='.$mypage.'&amp;subpage=modul&amp;func=install_modul">Beispielmodul installieren</a>'.$standard_msg[1].'</li>
         <li><a id="standard_show">Modul Code anzeigen</a></li>
       </ul>
     </div><!-- /.addon_template -->
 
     <div class="addon_template" id="demo_modul" style="display:none;">
     <h4>'.$modul_in.':</h4>';
-      $file = $REX['INCLUDE_PATH'].'/addons/'.$myself.'/modules/'.$modul_in;
+      $file = $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/modules/'.$modul_in;
       $fh = fopen($file, 'r');
       $contents = fread($fh, filesize($file));
       ini_set('highlight.comment', 'silver;font-size:10px;display:none;');
@@ -99,7 +99,7 @@ echo '
 
       echo '
       <h4>'.$modul_out.':</h4>';
-      $file = $REX['INCLUDE_PATH'].'/addons/'.$myself.'/modules/'.$modul_out;
+      $file = $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/modules/'.$modul_out;
       $fh = fopen($file, 'r');
       $contents = fread($fh, filesize($file));
       echo rex_highlight_string($contents);
@@ -107,7 +107,7 @@ echo '
     </div><!-- /.addon_template -->
 
     <div class="addon_template">
-      <p>Die Dateien der Beispielmodule befinden sich im Addon Ordner: <cite>./addons/'.$myself.'/modules/...</cite></p>
+      <p>Die Dateien der Beispielmodule befinden sich im Addon Ordner: <cite>./addons/'.$mypage.'/modules/...</cite></p>
     </div><!-- /.addon_template -->
 
   </div><!-- /.rex-addon-content -->
